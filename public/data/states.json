@@ -1,0 +1,1111 @@
+[
+    {
+        "id": "rajasthan",
+        "name": "Rajasthan",
+        "tagline": "Land of Kings",
+        "image": "public/assets/images/rajasthan.jpg",
+        "slug": "rajasthan",
+        "description": "Rajasthan is known for its majestic forts, palaces, and desert landscapes.",
+        "highlights": [
+          {
+            "title": "Jaipur – The Pink City",
+            "image": "public/assets/highlights/jaipur.jpg"
+          },
+          {
+            "title": "Udaipur – City of Lakes",
+            "image": "public/assets/highlights/udaipur.jpg"
+          }
+        ],
+        "food": [
+          {
+            "name": "Dal Baati Churma",
+            "image": "public/assets/food/dal-baati.jpg"
+          },
+          {
+            "name": "Laal Maas",
+            "image": "public/assets/food/laal-maas.jpg"
+          }
+        ],
+        "festivals": [
+          {
+            "name": "Desert Festival",
+            "image": "public/assets/festivals/desert-festival.jpg"
+          },
+          {
+            "name": "Teej",
+            "image": "public/assets/festivals/teej.jpg"
+          }
+        ],
+        "gallery": [
+          "public/assets/gallery/rajasthan1.jpg",
+          "public/assets/gallery/rajasthan2.jpg"
+        ]
+      }
+      ,
+      {
+        "id": "kerala",
+        "name": "Kerala",
+        "tagline": "God’s Own Country",
+        "image": "public/assets/images/kerala.jpg",
+        "slug": "kerala",
+        "description": "Kerala is famous for its backwaters, lush greenery, and ayurvedic traditions.",
+        "highlights": [
+          { "title": "Alleppey Backwaters", "image": "public/assets/highlights/alleppey.jpg" },
+          { "title": "Munnar Tea Gardens", "image": "public/assets/highlights/munnar.jpg" }
+        ],
+        "food": [
+          { "name": "Puttu & Kadala Curry", "image": "public/assets/food/puttu.jpg" },
+          { "name": "Kerala Sadya", "image": "public/assets/food/sadya.jpg" }
+        ],
+        "festivals": [
+          { "name": "Onam", "image": "public/assets/festivals/onam.jpg" },
+          { "name": "Vishu", "image": "public/assets/festivals/vishu.jpg" }
+        ],
+        "gallery": [
+          "public/assets/gallery/kerala1.jpg",
+          "public/assets/gallery/kerala2.jpg"
+        ]
+      },
+      {
+        "id": "himachal",
+        "name": "Himachal Pradesh",
+        "tagline": "Abode of the Himalayas",
+        "image": "public/assets/images/himachal.jpg",
+        "slug": "himachal-pradesh",
+        "description": "Nestled in the Himalayas, Himachal Pradesh is a haven for nature lovers.",
+        "highlights": [
+          { "title": "Shimla Hills", "image": "public/assets/highlights/shimla.jpg" },
+          { "title": "Spiti Valley", "image": "public/assets/highlights/spiti.jpg" }
+        ],
+        "food": [
+          { "name": "Chana Madra", "image": "public/assets/food/madra.jpg" },
+          { "name": "Siddu", "image": "public/assets/food/siddu.jpg" }
+        ],
+        "festivals": [
+          { "name": "Kullu Dussehra", "image": "public/assets/festivals/kullu.jpg" },
+          { "name": "Losar", "image": "public/assets/festivals/losar.jpg" }
+        ],
+        "gallery": [
+          "public/assets/gallery/himachal1.jpg",
+          "public/assets/gallery/himachal2.jpg"
+        ]
+      },
+      {
+        "id": "goa",
+        "name": "Goa",
+        "tagline": "Beach Paradise of India",
+        "image": "public/assets/images/goa.jpg",
+        "slug": "goa",
+        "description": "Goa is known for its vibrant nightlife, stunning beaches, and Portuguese heritage.",
+        "highlights": [
+          { "title": "Baga Beach", "image": "public/assets/highlights/baga.jpg" },
+          { "title": "Fort Aguada", "image": "public/assets/highlights/aguada.jpg" }
+        ],
+        "food": [
+          { "name": "Prawn Balchão", "image": "public/assets/food/balchao.jpg" },
+          { "name": "Goan Fish Curry", "image": "public/assets/food/fish-curry.jpg" }
+        ],
+        "festivals": [
+          { "name": "Goa Carnival", "image": "public/assets/festivals/carnival.jpg" },
+          { "name": "Shigmo", "image": "public/assets/festivals/shigmo.jpg" }
+        ],
+        "gallery": [
+          "public/assets/gallery/goa1.jpg",
+          "public/assets/gallery/goa2.jpg"
+        ]
+      },
+      {
+        "id": "uttarakhand",
+        "name": "Uttarakhand",
+        "tagline": "Dev Bhoomi (Land of the Gods)",
+        "image": "public/assets/images/uttarakhand.jpg",
+        "slug": "uttarakhand",
+        "description": "Uttarakhand is popular for spiritual centers like Rishikesh and natural beauty in the Himalayas.",
+        "highlights": [
+          { "title": "Valley of Flowers", "image": "public/assets/highlights/valley.jpg" },
+          { "title": "Kedarnath Temple", "image": "public/assets/highlights/kedarnath.jpg" }
+        ],
+        "food": [
+          { "name": "Aloo Ke Gutke", "image": "public/assets/food/aloo-gutke.jpg" },
+          { "name": "Chainsoo", "image": "public/assets/food/chainsoo.jpg" }
+        ],
+        "festivals": [
+          { "name": "Ganga Dussehra", "image": "public/assets/festivals/ganga.jpg" },
+          { "name": "Harela", "image": "public/assets/festivals/harela.jpg" }
+        ],
+        "gallery": [
+          "public/assets/gallery/uttarakhand1.jpg",
+          "public/assets/gallery/uttarakhand2.jpg"
+        ]
+      },
+      {
+        "id": "sikkim",
+        "name": "Sikkim",
+        "tagline": "Gateway to the Himalayas",
+        "image": "public/assets/images/sikkim.jpg",
+        "slug": "sikkim",
+        "description": "Sikkim offers breathtaking views, Buddhist monasteries, and eco-tourism opportunities.",
+        "highlights": [
+          {
+            "title": "Tsomgo Lake",
+            "image": "public/assets/highlights/sikkim-tsomgo.jpg"
+          },
+          {
+            "title": "Rumtek Monastery",
+            "image": "public/assets/highlights/sikkim-rumtek.jpg"
+          }
+        ],
+        "food": [
+          {
+            "name": "Phagshapa",
+            "image": "public/assets/food/phagshapa.jpg"
+          },
+          {
+            "name": "Thukpa",
+            "image": "public/assets/food/thukpa.jpg"
+          }
+        ],
+        "festivals": [
+          {
+            "name": "Losar Festival",
+            "image": "public/assets/festivals/sikkim-losar.jpg"
+          },
+          {
+            "name": "Saga Dawa",
+            "image": "public/assets/festivals/sikkim-sagadawa.jpg"
+          }
+        ],
+        "gallery": [
+          "public/assets/gallery/sikkim1.jpg",
+          "public/assets/gallery/sikkim2.jpg"
+        ]
+      },
+      {
+        "id": "karnataka",
+        "name": "Karnataka",
+        "tagline": "One State, Many Worlds",
+        "image": "public/assets/images/karnataka.jpg",
+        "slug": "karnataka",
+        "description": "Karnataka boasts historical monuments, thriving tech cities, and serene hill stations.",
+        "highlights": [
+          {
+            "title": "Hampi",
+            "image": "public/assets/highlights/karnataka-hampi.jpg"
+          },
+          {
+            "title": "Coorg",
+            "image": "public/assets/highlights/karnataka-coorg.jpg"
+          }
+        ],
+        "food": [
+          {
+            "name": "Bisi Bele Bath",
+            "image": "public/assets/food/bisi-bele.jpg"
+          },
+          {
+            "name": "Mysore Pak",
+            "image": "public/assets/food/mysore-pak.jpg"
+          }
+        ],
+        "festivals": [
+          {
+            "name": "Mysuru Dasara",
+            "image": "public/assets/festivals/mysuru-dasara.jpg"
+          },
+          {
+            "name": "Karaga",
+            "image": "public/assets/festivals/karaga.jpg"
+          }
+        ],
+        "gallery": [
+          "public/assets/gallery/karnataka1.jpg",
+          "public/assets/gallery/karnataka2.jpg"
+        ]
+      },
+      {
+        "id": "tamil-nadu",
+        "name": "Tamil Nadu",
+        "tagline": "Where Tradition Meets Technology",
+        "image": "public/assets/images/tamil-nadu.jpg",
+        "slug": "tamil-nadu",
+        "description": "Tamil Nadu is famous for classical temples, Dravidian architecture, and rich cultural heritage.",
+        "highlights": [
+          {
+            "title": "Meenakshi Temple",
+            "image": "public/assets/highlights/meenakshi-temple.jpg"
+          },
+          {
+            "title": "Marina Beach",
+            "image": "public/assets/highlights/marina-beach.jpg"
+          }
+        ],
+        "food": [
+          {
+            "name": "Idiyappam with Curry",
+            "image": "public/assets/food/idiyappam.jpg"
+          },
+          {
+            "name": "Chettinad Chicken",
+            "image": "public/assets/food/chettinad.jpg"
+          }
+        ],
+        "festivals": [
+          {
+            "name": "Pongal",
+            "image": "public/assets/festivals/pongal.jpg"
+          },
+          {
+            "name": "Karthigai Deepam",
+            "image": "public/assets/festivals/karthigai.jpg"
+          }
+        ],
+        "gallery": [
+          "public/assets/gallery/tamil1.jpg",
+          "public/assets/gallery/tamil2.jpg"
+        ]
+      },
+      {
+        "id": "ladakh",
+        "name": "Ladakh",
+        "tagline": "Land of High Passes",
+        "image": "public/assets/images/ladakh.jpg",
+        "slug": "ladakh",
+        "description": "Ladakh is a high-altitude desert with stunning landscapes, monasteries, and adventure routes.",
+        "highlights": [
+          {
+            "title": "Pangong Lake",
+            "image": "public/assets/highlights/ladakh-pangong.jpg"
+          },
+          {
+            "title": "Magnetic Hill",
+            "image": "public/assets/highlights/ladakh-magnetichill.jpg"
+          }
+        ],
+        "food": [
+          {
+            "name": "Momos",
+            "image": "public/assets/food/momos.jpg"
+          },
+          {
+            "name": "Skyu",
+            "image": "public/assets/food/skyu.jpg"
+          }
+        ],
+        "festivals": [
+          {
+            "name": "Hemis Festival",
+            "image": "public/assets/festivals/hemis.jpg"
+          },
+          {
+            "name": "Losar",
+            "image": "public/assets/festivals/ladakh-losar.jpg"
+          }
+        ],
+        "gallery": [
+          "public/assets/gallery/ladakh1.jpg",
+          "public/assets/gallery/ladakh2.jpg"
+        ]
+      },
+      {
+        "id": "andaman",
+        "name": "Andaman & Nicobar",
+        "tagline": "Tropical Paradise",
+        "image": "public/assets/images/andaman.jpg",
+        "slug": "andaman-nicobar",
+        "description": "Andaman and Nicobar Islands offer pristine beaches, marine life, and colonial history.",
+        "highlights": [
+          {
+            "title": "Radhanagar Beach",
+            "image": "public/assets/highlights/andaman-radhanagar.jpg"
+          },
+          {
+            "title": "Cellular Jail",
+            "image": "public/assets/highlights/andaman-jail.jpg"
+          }
+        ],
+        "food": [
+          {
+            "name": "Seafood Curry",
+            "image": "public/assets/food/seafood-curry.jpg"
+          },
+          {
+            "name": "Fish Tikka",
+            "image": "public/assets/food/fish-tikka.jpg"
+          }
+        ],
+        "festivals": [
+          {
+            "name": "Island Tourism Festival",
+            "image": "public/assets/festivals/island-festival.jpg"
+          },
+          {
+            "name": "Subhash Mela",
+            "image": "public/assets/festivals/subhash-mela.jpg"
+          }
+        ],
+        "gallery": [
+          "public/assets/gallery/andaman1.jpg",
+          "public/assets/gallery/andaman2.jpg"
+        ]
+      },
+      {
+        "id": "maharashtra",
+        "name": "Maharashtra",
+        "tagline": "Gateway to the Heart of India",
+        "image": "public/assets/images/maharashtra.jpg",
+        "slug": "maharashtra",
+        "description": "Maharashtra is known for its bustling cities, majestic forts, and rich Maratha heritage.",
+        "highlights": [
+          {
+            "title": "Gateway of India",
+            "image": "public/assets/highlights/maharashtra-gateway.jpg"
+          },
+          {
+            "title": "Ajanta & Ellora Caves",
+            "image": "public/assets/highlights/maharashtra-ajanta.jpg"
+          }
+        ],
+        "food": [
+          {
+            "name": "Vada Pav",
+            "image": "public/assets/food/vadapav.jpg"
+          },
+          {
+            "name": "Puran Poli",
+            "image": "public/assets/food/puranpoli.jpg"
+          }
+        ],
+        "festivals": [
+          {
+            "name": "Ganesh Chaturthi",
+            "image": "public/assets/festivals/ganeshchaturthi.jpg"
+          },
+          {
+            "name": "Gudi Padwa",
+            "image": "public/assets/festivals/gudipadwa.jpg"
+          }
+        ],
+        "gallery": [
+          "public/assets/gallery/maharashtra1.jpg",
+          "public/assets/gallery/maharashtra2.jpg"
+        ]
+      },
+      {
+        "id": "gujarat",
+        "name": "Gujarat",
+        "tagline": "Vibrant Gujarat",
+        "image": "public/assets/images/gujarat.jpg",
+        "slug": "gujarat",
+        "description": "Gujarat is a land of legends, crafts, and festivals, home to the Gir lions and white Rann.",
+        "highlights": [
+          {
+            "title": "Statue of Unity",
+            "image": "public/assets/highlights/gujarat-unity.jpg"
+          },
+          {
+            "title": "Rann of Kutch",
+            "image": "public/assets/highlights/gujarat-rann.jpg"
+          }
+        ],
+        "food": [
+          {
+            "name": "Dhokla",
+            "image": "public/assets/food/dhokla.jpg"
+          },
+          {
+            "name": "Undhiyu",
+            "image": "public/assets/food/undhiyu.jpg"
+          }
+        ],
+        "festivals": [
+          {
+            "name": "Navratri",
+            "image": "public/assets/festivals/navratri.jpg"
+          },
+          {
+            "name": "Rann Utsav",
+            "image": "public/assets/festivals/rannutav.jpg"
+          }
+        ],
+        "gallery": [
+          "public/assets/gallery/gujarat1.jpg",
+          "public/assets/gallery/gujarat2.jpg"
+        ]
+      },
+      {
+        "id": "punjab",
+        "name": "Punjab",
+        "tagline": "The Land of Five Rivers",
+        "image": "public/assets/images/punjab.jpg",
+        "slug": "punjab",
+        "description": "Punjab is a vibrant land known for its hearty food, Bhangra beats, and spiritual centers.",
+        "highlights": [
+          {
+            "title": "Golden Temple",
+            "image": "public/assets/highlights/punjab-goldentemple.jpg"
+          },
+          {
+            "title": "Wagah Border",
+            "image": "public/assets/highlights/punjab-wagah.jpg"
+          }
+        ],
+        "food": [
+          {
+            "name": "Sarson da Saag & Makki di Roti",
+            "image": "public/assets/food/sarsonmakki.jpg"
+          },
+          {
+            "name": "Butter Chicken",
+            "image": "public/assets/food/butterchicken.jpg"
+          }
+        ],
+        "festivals": [
+          {
+            "name": "Baisakhi",
+            "image": "public/assets/festivals/baisakhi.jpg"
+          },
+          {
+            "name": "Lohri",
+            "image": "public/assets/festivals/lohri.jpg"
+          }
+        ],
+        "gallery": [
+          "public/assets/gallery/punjab1.jpg",
+          "public/assets/gallery/punjab2.jpg"
+        ]
+      },
+      {
+        "id": "haryana",
+        "name": "Haryana",
+        "tagline": "The Land of Glory",
+        "image": "public/assets/images/haryana.jpg",
+        "slug": "haryana",
+        "description": "Haryana is a land of rich history, rural traditions, and the epic battleground of Kurukshetra.",
+        "highlights": [
+          {
+            "title": "Kurukshetra",
+            "image": "public/assets/highlights/haryana-kurukshetra.jpg"
+          },
+          {
+            "title": "Sultanpur Bird Sanctuary",
+            "image": "public/assets/highlights/haryana-sultanpur.jpg"
+          }
+        ],
+        "food": [
+          {
+            "name": "Bajra Khichdi",
+            "image": "public/assets/food/bajra-khichdi.jpg"
+          },
+          {
+            "name": "Besan Masala Roti",
+            "image": "public/assets/food/besanroti.jpg"
+          }
+        ],
+        "festivals": [
+          {
+            "name": "Teej",
+            "image": "public/assets/festivals/hteej.jpg"
+          },
+          {
+            "name": "Gugga Naumi",
+            "image": "public/assets/festivals/gugga.jpg"
+          }
+        ],
+        "gallery": [
+          "public/assets/gallery/haryana1.jpg",
+          "public/assets/gallery/haryana2.jpg"
+        ]
+      },
+      {
+        "id": "madhya-pradesh",
+        "name": "Madhya Pradesh",
+        "tagline": "The Heart of Incredible India",
+        "image": "public/assets/images/madhyapradesh.jpg",
+        "slug": "madhya-pradesh",
+        "description": "Madhya Pradesh is a land of grand forts, cave temples, and pristine wildlife sanctuaries.",
+        "highlights": [
+          {
+            "title": "Khajuraho Temples",
+            "image": "public/assets/highlights/mp-khajuraho.jpg"
+          },
+          {
+            "title": "Kanha National Park",
+            "image": "public/assets/highlights/mp-kanha.jpg"
+          }
+        ],
+        "food": [
+          {
+            "name": "Poha",
+            "image": "public/assets/food/poha.jpg"
+          },
+          {
+            "name": "Dal Bafla",
+            "image": "public/assets/food/dalbafla.jpg"
+          }
+        ],
+        "festivals": [
+          {
+            "name": "Lokrang Festival",
+            "image": "public/assets/festivals/lokrang.jpg"
+          },
+          {
+            "name": "Khajuraho Dance Festival",
+            "image": "public/assets/festivals/khajuraho.jpg"
+          }
+        ],
+        "gallery": [
+          "public/assets/gallery/mp1.jpg",
+          "public/assets/gallery/mp2.jpg"
+        ]
+      },
+      {
+        "id": "west-bengal",
+        "name": "West Bengal",
+        "tagline": "The Cultural Capital of India",
+        "image": "public/assets/images/westbengal.jpg",
+        "slug": "west-bengal",
+        "description": "West Bengal is a blend of cultural richness, colonial architecture, artistic heritage, and spiritual destinations.",
+        "highlights": [
+          {
+            "title": "Victoria Memorial",
+            "image": "public/assets/highlights/wb-victoria.jpg"
+          },
+          {
+            "title": "Sundarbans",
+            "image": "public/assets/highlights/wb-sundarbans.jpg"
+          }
+        ],
+        "food": [
+          {
+            "name": "Rosogolla",
+            "image": "public/assets/food/rosogolla.jpg"
+          },
+          {
+            "name": "Shorshe Ilish",
+            "image": "public/assets/food/shorsheilish.jpg"
+          }
+        ],
+        "festivals": [
+          {
+            "name": "Durga Puja",
+            "image": "public/assets/festivals/durgapuja.jpg"
+          },
+          {
+            "name": "Poila Boishakh",
+            "image": "public/assets/festivals/poilaboishakh.jpg"
+          }
+        ],
+        "gallery": [
+          "public/assets/gallery/wb1.jpg",
+          "public/assets/gallery/wb2.jpg"
+        ]
+      },
+      {
+        "id": "odisha",
+        "name": "Odisha",
+        "tagline": "The Soul of Incredible India",
+        "image": "public/assets/images/odisha.jpg",
+        "slug": "odisha",
+        "description": "Odisha is known for its ancient temples, tribal culture, classical dance, and natural beauty.",
+        "highlights": [
+          {
+            "title": "Konark Sun Temple",
+            "image": "public/assets/highlights/odisha-konark.jpg"
+          },
+          {
+            "title": "Chilika Lake",
+            "image": "public/assets/highlights/odisha-chilika.jpg"
+          }
+        ],
+        "food": [
+          {
+            "name": "Dalma",
+            "image": "public/assets/food/dalma.jpg"
+          },
+          {
+            "name": "Chhena Poda",
+            "image": "public/assets/food/chenapoda.jpg"
+          }
+        ],
+        "festivals": [
+          {
+            "name": "Rath Yatra",
+            "image": "public/assets/festivals/rathyatra.jpg"
+          },
+          {
+            "name": "Durga Puja",
+            "image": "public/assets/festivals/odisha-durgapuja.jpg"
+          }
+        ],
+        "gallery": [
+          "public/assets/gallery/odisha1.jpg",
+          "public/assets/gallery/odisha2.jpg"
+        ]
+      },
+      {
+        "id": "bihar",
+        "name": "Bihar",
+        "tagline": "Land of Monasteries",
+        "image": "public/assets/images/bihar.jpg",
+        "slug": "bihar",
+        "description": "Bihar is a state steeped in history, spirituality, and ancient universities like Nalanda and Vikramshila.",
+        "highlights": [
+          {
+            "title": "Mahabodhi Temple",
+            "image": "public/assets/highlights/bihar-bodhgaya.jpg"
+          },
+          {
+            "title": "Nalanda Ruins",
+            "image": "public/assets/highlights/bihar-nalanda.jpg"
+          }
+        ],
+        "food": [
+          {
+            "name": "Litti Chokha",
+            "image": "public/assets/food/littichokha.jpg"
+          },
+          {
+            "name": "Khaja",
+            "image": "public/assets/food/khaja.jpg"
+          }
+        ],
+        "festivals": [
+          {
+            "name": "Chhath Puja",
+            "image": "public/assets/festivals/chhathpuja.jpg"
+          },
+          {
+            "name": "Sonepur Mela",
+            "image": "public/assets/festivals/sonepur.jpg"
+          }
+        ],
+        "gallery": [
+          "public/assets/gallery/bihar1.jpg",
+          "public/assets/gallery/bihar2.jpg"
+        ]
+      },
+      {
+        "id": "jharkhand",
+        "name": "Jharkhand",
+        "tagline": "Land of Forests and Falls",
+        "image": "public/assets/images/jharkhand.jpg",
+        "slug": "jharkhand",
+        "description": "Jharkhand is known for its scenic waterfalls, tribal heritage, and natural reserves.",
+        "highlights": [
+          {
+            "title": "Hundru Falls",
+            "image": "public/assets/highlights/jharkhand-hundru.jpg"
+          },
+          {
+            "title": "Netarhat",
+            "image": "public/assets/highlights/jharkhand-netarhat.jpg"
+          }
+        ],
+        "food": [
+          {
+            "name": "Thekua",
+            "image": "public/assets/food/thekua.jpg"
+          },
+          {
+            "name": "Chilka Roti",
+            "image": "public/assets/food/chilka-roti.jpg"
+          }
+        ],
+        "festivals": [
+          {
+            "name": "Sarhul",
+            "image": "public/assets/festivals/sarhul.jpg"
+          },
+          {
+            "name": "Karma Puja",
+            "image": "public/assets/festivals/karma.jpg"
+          }
+        ],
+        "gallery": [
+          "public/assets/gallery/jharkhand1.jpg",
+          "public/assets/gallery/jharkhand2.jpg"
+        ]
+      },
+      {
+        "id": "chhattisgarh",
+        "name": "Chhattisgarh",
+        "tagline": "Full of Surprises",
+        "image": "public/assets/images/chhattisgarh.jpg",
+        "slug": "chhattisgarh",
+        "description": "Chhattisgarh is rich in tribal culture, waterfalls, temples, and untouched natural beauty.",
+        "highlights": [
+          {
+            "title": "Chitrakote Falls",
+            "image": "public/assets/highlights/chhattisgarh-chitrakote.jpg"
+          },
+          {
+            "title": "Barnawapara Wildlife Sanctuary",
+            "image": "public/assets/highlights/chhattisgarh-barnawapara.jpg"
+          }
+        ],
+        "food": [
+          {
+            "name": "Chana Samosa",
+            "image": "public/assets/food/chana-samosa.jpg"
+          },
+          {
+            "name": "Faraa",
+            "image": "public/assets/food/faraa.jpg"
+          }
+        ],
+        "festivals": [
+          {
+            "name": "Bastar Dussehra",
+            "image": "public/assets/festivals/bastar-dussehra.jpg"
+          },
+          {
+            "name": "Hareli Festival",
+            "image": "public/assets/festivals/hareli.jpg"
+          }
+        ],
+        "gallery": [
+          "public/assets/gallery/chhattisgarh1.jpg",
+          "public/assets/gallery/chhattisgarh2.jpg"
+        ]
+      },
+      {
+        "id": "assam",
+        "name": "Assam",
+        "tagline": "Gateway to the Northeast",
+        "image": "public/assets/images/assam.jpg",
+        "slug": "assam",
+        "description": "Assam is known for its tea gardens, Brahmaputra River, wildlife, and vibrant culture.",
+        "highlights": [
+          {
+            "title": "Kaziranga National Park",
+            "image": "public/assets/highlights/assam-kaziranga.jpg"
+          },
+          {
+            "title": "Majuli Island",
+            "image": "public/assets/highlights/assam-majuli.jpg"
+          }
+        ],
+        "food": [
+          {
+            "name": "Masor Tenga",
+            "image": "public/assets/food/masor-tenga.jpg"
+          },
+          {
+            "name": "Khar",
+            "image": "public/assets/food/khar.jpg"
+          }
+        ],
+        "festivals": [
+          {
+            "name": "Bihu",
+            "image": "public/assets/festivals/bihu.jpg"
+          },
+          {
+            "name": "Ambubachi Mela",
+            "image": "public/assets/festivals/ambubachi.jpg"
+          }
+        ],
+        "gallery": [
+          "public/assets/gallery/assam1.jpg",
+          "public/assets/gallery/assam2.jpg"
+        ]
+      },
+      {
+        "id": "manipur",
+        "name": "Manipur",
+        "tagline": "The Jewel of India",
+        "image": "public/assets/images/manipur.jpg",
+        "slug": "manipur",
+        "description": "Manipur is a scenic state with lush greenery, classical dance, and floating lakes.",
+        "highlights": [
+          {
+            "title": "Loktak Lake",
+            "image": "public/assets/highlights/manipur-loktak.jpg"
+          },
+          {
+            "title": "Kangla Fort",
+            "image": "public/assets/highlights/manipur-kangla.jpg"
+          }
+        ],
+        "food": [
+          {
+            "name": "Eromba",
+            "image": "public/assets/food/eromba.jpg"
+          },
+          {
+            "name": "Chamthong",
+            "image": "public/assets/food/chamthong.jpg"
+          }
+        ],
+        "festivals": [
+          {
+            "name": "Yaoshang",
+            "image": "public/assets/festivals/yaoshang.jpg"
+          },
+          {
+            "name": "Lai Haraoba",
+            "image": "public/assets/festivals/laiharaoba.jpg"
+          }
+        ],
+        "gallery": [
+          "public/assets/gallery/manipur1.jpg",
+          "public/assets/gallery/manipur2.jpg"
+        ]
+      },
+      {
+        "id": "meghalaya",
+        "name": "Meghalaya",
+        "tagline": "Abode of Clouds",
+        "image": "public/assets/images/meghalaya.jpg",
+        "slug": "meghalaya",
+        "description": "Meghalaya is famed for its rainfall, living root bridges, caves, and pristine beauty.",
+        "highlights": [
+          {
+            "title": "Living Root Bridges",
+            "image": "public/assets/highlights/meghalaya-rootbridge.jpg"
+          },
+          {
+            "title": "Cherrapunji",
+            "image": "public/assets/highlights/meghalaya-cherrapunji.jpg"
+          }
+        ],
+        "food": [
+          {
+            "name": "Jadoh",
+            "image": "public/assets/food/jadoh.jpg"
+          },
+          {
+            "name": "Dohneiiong",
+            "image": "public/assets/food/dohneiiong.jpg"
+          }
+        ],
+        "festivals": [
+          {
+            "name": "Shad Suk Mynsiem",
+            "image": "public/assets/festivals/shadsuk.jpg"
+          },
+          {
+            "name": "Wangala Festival",
+            "image": "public/assets/festivals/wangala.jpg"
+          }
+        ],
+        "gallery": [
+          "public/assets/gallery/meghalaya1.jpg",
+          "public/assets/gallery/meghalaya2.jpg"
+        ]
+      },
+      {
+        "id": "mizoram",
+        "name": "Mizoram",
+        "tagline": "Land of the Hill People",
+        "image": "public/assets/images/mizoram.jpg",
+        "slug": "mizoram",
+        "description": "Mizoram is a peaceful state with rolling hills, bamboo forests, and a vibrant tribal culture.",
+        "highlights": [
+          {
+            "title": "Phawngpui Hills",
+            "image": "public/assets/highlights/mizoram-phawngpui.jpg"
+          },
+          {
+            "title": "Reiek Tlang",
+            "image": "public/assets/highlights/mizoram-reiek.jpg"
+          }
+        ],
+        "food": [
+          {
+            "name": "Bai",
+            "image": "public/assets/food/bai.jpg"
+          },
+          {
+            "name": "Sawhchiar",
+            "image": "public/assets/food/sawhchiar.jpg"
+          }
+        ],
+        "festivals": [
+          {
+            "name": "Chapchar Kut",
+            "image": "public/assets/festivals/chapcharkut.jpg"
+          },
+          {
+            "name": "Mim Kut",
+            "image": "public/assets/festivals/mimkut.jpg"
+          }
+        ],
+        "gallery": [
+          "public/assets/gallery/mizoram1.jpg",
+          "public/assets/gallery/mizoram2.jpg"
+        ]
+      },
+      {
+        "id": "nagaland",
+        "name": "Nagaland",
+        "tagline": "Land of Festivals",
+        "image": "public/assets/images/nagaland.jpg",
+        "slug": "nagaland",
+        "description": "Nagaland is a land of vibrant tribes, colorful festivals, and breathtaking hills.",
+        "highlights": [
+          {
+            "title": "Dzukou Valley",
+            "image": "public/assets/highlights/nagaland-dzukou.jpg"
+          },
+          {
+            "title": "Kohima War Cemetery",
+            "image": "public/assets/highlights/nagaland-kohima.jpg"
+          },
+          {
+            "title": "Kohima War Cemetery",
+            "image": "public/assets/highlights/nagaland-kohima.jpg"
+          }
+        ],
+        "food": [
+          {
+            "name": "Smoked Pork with Bamboo Shoot",
+            "image": "public/assets/food/smokedpork.jpg"
+          },
+          {
+            "name": "Axone (Fermented Soybean Dish)",
+            "image": "public/assets/food/axone.jpg"
+          }
+        ],
+        "festivals": [
+          {
+            "name": "Hornbill Festival",
+            "image": "public/assets/festivals/hornbill.jpg"
+          },
+          {
+            "name": "Moatsu Festival",
+            "image": "public/assets/festivals/moatsu.jpg"
+          }
+        ],
+        "gallery": [
+          "public/assets/gallery/nagaland1.jpg",
+          "public/assets/gallery/nagaland2.jpg"
+        ]
+      },
+      {
+        "id": "telangana",
+        "name": "Telangana",
+        "tagline": "The Youngest State of India",
+        "image": "public/assets/images/telangana.jpg",
+        "slug": "telangana",
+        "description": "Telangana boasts a rich heritage with historical monuments, delectable cuisine, and vibrant festivals.",
+        "highlights": [
+          {
+            "title": "Charminar",
+            "image": "public/assets/highlights/telangana-charminar.jpg"
+          },
+          {
+            "title": "Ramoji Film City",
+            "image": "public/assets/highlights/telangana-ramoji.jpg"
+          }
+        ],
+        "food": [
+          {
+            "name": "Hyderabadi Biryani",
+            "image": "public/assets/food/hyderabadi-biryani.jpg"
+          },
+          {
+            "name": "Sarva Pindi",
+            "image": "public/assets/food/sarvapindi.jpg"
+          }
+        ],
+        "festivals": [
+          {
+            "name": "Bathukamma",
+            "image": "public/assets/festivals/bathukamma.jpg"
+          },
+          {
+            "name": "Bonalu",
+            "image": "public/assets/festivals/bonalu.jpg"
+          }
+        ],
+        "gallery": [
+          "public/assets/gallery/telangana1.jpg",
+          "public/assets/gallery/telangana2.jpg"
+        ]
+      },
+      {
+        "id": "arunachal-pradesh",
+        "name": "Arunachal Pradesh",
+        "tagline": "The Land of the Rising Sun",
+        "image": "public/assets/images/arunachal.jpg",
+        "slug": "arunachal-pradesh",
+        "description": "Arunachal Pradesh is a serene and scenic state blessed with lush valleys, high mountain passes, and tribal heritage.",
+        "highlights": [
+          {
+            "title": "Tawang Monastery",
+            "image": "public/assets/highlights/arunachal-tawang.jpg"
+          },
+          {
+            "title": "Ziro Valley",
+            "image": "public/assets/highlights/arunachal-ziro.jpg"
+          }
+        ],
+        "food": [
+          {
+            "name": "Thukpa",
+            "image": "public/assets/food/thukpaa.jpg"
+          },
+          {
+            "name": "Apong (Rice Beer)",
+            "image": "public/assets/food/apong.jpg"
+          }
+        ],
+        "festivals": [
+          {
+            "name": "Losar",
+            "image": "public/assets/festivals/arunachal-loser.jpg"
+          },
+          {
+            "name": "Ziro Festival of Music",
+            "image": "public/assets/festivals/zirofest.jpg"
+          }
+        ],
+        "gallery": [
+          "public/assets/gallery/arunachal1.jpg",
+          "public/assets/gallery/arunachal2.jpg"
+        ]
+      },
+      {
+        "id": "tripura",
+        "name": "Tripura",
+        "tagline": "Queen of the Hills",
+        "image": "public/assets/images/tripura.jpg",
+        "slug": "tripura",
+        "description": "Tripura is a small yet culturally rich state, known for its palaces, lakes, and bamboo handicrafts.",
+        "highlights": [
+          {
+            "title": "Ujjayanta Palace",
+            "image": "public/assets/highlights/tripura-palace.jpg"
+          },
+          {
+            "title": "Neermahal",
+            "image": "public/assets/highlights/tripura-neermahal.jpg"
+          }
+        ],
+        "food": [
+          {
+            "name": "Mui Borok",
+            "image": "public/assets/food/muiborok.jpg"
+          },
+          {
+            "name": "Chakwi",
+            "image": "public/assets/food/chakwi.jpg"
+          }
+        ],
+        "festivals": [
+          {
+            "name": "Kharchi Puja",
+            "image": "public/assets/festivals/kharchi.jpg"
+          },
+          {
+            "name": "Garia Puja",
+            "image": "public/assets/festivals/garia.jpg"
+          }
+        ],
+        "gallery": [
+          "public/assets/gallery/tripura1.jpg",
+          "public/assets/gallery/tripura2.jpg"
+        ]
+      } 
+  ]
