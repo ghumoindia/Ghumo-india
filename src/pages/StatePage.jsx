@@ -5,6 +5,16 @@ import { FaVolumeMute, FaVolumeUp } from "react-icons/fa";
 import { Slide } from "react-slideshow-image";
 import "react-slideshow-image/dist/styles.css";
 
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/components/ui/carousel";
+import { Card, CardContent } from "@/components/components/ui/card";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+
 const fadeUp = {
   hidden: { opacity: 0, y: 60 },
   visible: { opacity: 1, y: 0 },
@@ -15,18 +25,15 @@ const zoomIn = {
   visible: { scale: 1, opacity: 1 },
 };
 
-const images = [
-  "https://images.unsplash.com/photo-1509721434272-b79147e0e708?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80",
-  "https://images.unsplash.com/photo-1506710507565-203b9f24669b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1536&q=80",
-  "https://images.unsplash.com/photo-1536987333706-fc9adfb10d91?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80",
-];
+const images = [""];
 
 const StateWorld = () => {
   const { slug } = useParams();
   const [state, setState] = useState(null);
   const [audio, setAudio] = useState(null);
   const [isPlaying, setIsPlaying] = useState(false);
-
+  const [current, setCurrent] = useState(0);
+  console.log("sttat data ", state);
   useEffect(() => {
     const fetchData = async () => {
       const res = await fetch("/data/states.json");
@@ -69,47 +76,63 @@ const StateWorld = () => {
         Loading Incredible Experience...
       </div>
     );
+
+  const goTo = (index) => {
+    if (index >= 0 && index < state?.imageArray?.length) setCurrent(index);
+  };
   const Section = ({ title, items, isImageOnly = false }) => (
     <motion.div
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true }}
       variants={fadeUp}
-      transition={{ duration: 0.7 }}
       className="font-montserrat text-black"
     >
       <h2 className="text-2xl md:text-3xl font-semibold mb-6 text-center md:text-left">
         {title}
       </h2>
 
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
-        {items.map((item, i) => (
-          <motion.div
-            key={i}
-            className="bg-white rounded-lg shadow-sm hover:shadow-lg transition-shadow duration-300 overflow-hidden"
-            variants={zoomIn}
-          >
-            <img
-              src={`/${isImageOnly ? item : item.image}`}
-              alt={item.name || item.title || `Item ${i}`}
-              className="w-full h-48 md:h-56 object-cover"
-            />
-            {!isImageOnly && (
-              <div className="p-3 text-center">
-                <p className="text-base font-medium text-gray-800">
-                  {item.name || item.title}
-                </p>
-              </div>
-            )}
-          </motion.div>
-        ))}
-      </div>
+      <Carousel className="relative pb-12 mx-5">
+        {" "}
+        {/* Add space for buttons */}
+        <CarouselContent className="mx-2">
+          {items.map((item, i) => (
+            <CarouselItem
+              key={i}
+              className="md:basis-1/2 lg:basis-1/3 p-2 " // use padding for spacing instead of grid
+            >
+              <motion.div
+                className="bg-white rounded-lg shadow-sm hover:shadow-lg transition-shadow duration-300 overflow-hidden"
+                variants={zoomIn}
+              >
+                <img
+                  src={`/${isImageOnly ? item : item.image}`}
+                  alt={item.name || item.title || `Item ${i}`}
+                  className="w-full h-48 md:h-56 object-cover"
+                />
+                {!isImageOnly && (
+                  <div className="p-3 text-center">
+                    <p className="text-base font-medium text-gray-800">
+                      {item.name || item.title}
+                    </p>
+                  </div>
+                )}
+              </motion.div>
+            </CarouselItem>
+          ))}
+        </CarouselContent>
+        {/* Bottom Centered Buttons */}
+        <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex gap-4 z-50">
+          <CarouselPrevious className="bg-white rounded-full cursor-pointer shadow p-2 hover:bg-black hover:text-white hover:scale-105 transition-all duration-300  " />
+          <CarouselNext className="bg-white rounded-full shadow p-2 hover:bg-black hover:text-white hover:scale-105 transition-all duration-300 cursor-pointer" />
+        </div>
+      </Carousel>
     </motion.div>
   );
 
   return (
     <div
-      className="min-h-screen font-[Poppins] text-white"
+      className="  font-[Poppins] text-white"
       style={{
         background: `linear-gradient(to bottom, ${
           state.bgTheme || "#111827"
@@ -117,109 +140,130 @@ const StateWorld = () => {
       }}
     >
       {/* Hero Slider */}
-      <div>
-        <Slide
-          arrows={true}
-          duration={2000}
-          easing="ease"
-          // className="relative w-full h-screen overflow-hidden"
-          style={{ width: "100%", height: "80vh" }}
-        >
-          {images.map((url, index) => (
-            <div key={index} className="each-slide-effect">
-              <div
-                className="h-screen bg-center bg-cover flex items-center justify-center relative"
-                style={{ backgroundImage: `url(${url})` }}
-              >
-                <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/40 to-black/90 z-10" />
-                <div className="z-20 max-w-6xl text-center px-6">
-                  <motion.h1
-                    className="text-5xl md:text-7xl font-extrabold drop-shadow-lg text-yellow-400"
-                    initial={{ opacity: 0, y: 50 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.7 }}
-                  >
-                    {state.name}
-                  </motion.h1>
-                  <motion.p
-                    className="text-2xl md:text-3xl italic mt-6 text-gray-300"
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.3, duration: 0.6 }}
-                  >
-                    {state.tagline}
-                  </motion.p>
-                </div>
-              </div>
-            </div>
-          ))}
-        </Slide>
+      <div className="">
+        <Carousel>
+          <CarouselContent>
+            <CarouselItem className="relative h-[500px]">
+              <img
+                src={`/${
+                  state?.imageArray ? state?.imageArray[current] : state?.image
+                }`}
+                alt={`Slide ${current + 1}`}
+                className="w-full h-full  object-cover"
+              />
 
-        {/* Music Button */}
-        {state.music && (
-          <button
-            className="absolute top-6 right-6 bg-white/10 hover:bg-white/30 backdrop-blur-md p-4 rounded-full z-30 transition"
-            onClick={toggleAudio}
-            title="Toggle Music"
-          >
-            {isPlaying ? <FaVolumeUp size={24} /> : <FaVolumeMute size={24} />}
-          </button>
-        )}
+              {/* Thumbnail strip */}
+              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 bg-white/80 px-2 py-1 rounded shadow">
+                {state?.imageArray ? (
+                  state?.imageArray.map((img, idx) => (
+                    <img
+                      key={idx}
+                      src={`/${img}`}
+                      onClick={() => goTo(idx)}
+                      className={`h-12 w-16 object-contain cursor-pointer rounded ${
+                        current === idx ? "ring-2 ring-blue-500" : "opacity-60"
+                      }`}
+                    />
+                  ))
+                ) : (
+                  <img
+                    // key={idx}
+                    src={`/${state?.image}`}
+                    // onClick={() => goTo(idx)}
+                    className={`h-12 w-16 object-contain cursor-pointer rounded ring-2 ring-blue-500  `}
+                  />
+                )}
+              </div>
+            </CarouselItem>
+          </CarouselContent>
+        </Carousel>
       </div>
 
       {/* Main Content */}
       <div className="max-w-[1700px] mx-auto px-6 md:px-16 py-24 space-y-12 bg-gradient-to-br from-white to-yellow-50 text-black">
-        {/* Description */}
         <motion.section
-          className="  mx-auto p-6 bg-white rounded-3xl shadow-xl text-gray-800 leading-relaxed tracking-wide space-y-6"
+          className=" px-8 py-12 bg-white rounded-3xl shadow-2xl text-gray-800 leading-relaxed tracking-wide space-y-8 font-montserrat"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-3xl font-bold text-gray-900">
+          <h2 className="text-4xl font-extrabold text-center text-yellow-500 drop-shadow-lg mb-6">
             About Madhya Pradesh Tourism (MP)
           </h2>
-          <p>
-            Welcome to the heart of India, Madhya Pradesh, a state which exudes
-            timelessness in every way. The exotic land is an intoxicating
-            mixture of rich history, vibrant sights, awe-inspiring art and
-            shrines. From north to south, east to west, Madhya Pradesh is
-            adorned with beautiful tourist attractions...
-          </p>
-          <p>
-            The state shares its borders with 6 states of India – Chhattisgarh,
-            Maharashtra, Gujarat, Rajasthan and Uttar Pradesh.
+
+          <p className="text-lg max-w-prose mx-auto text-center">
+            Welcome to the{" "}
+            <span className="font-semibold text-yellow-600">
+              Heart of India
+            </span>{" "}
+            — Madhya Pradesh! A land where
+            <span className="italic text-gray-700">
+              {" "}
+              timeless heritage meets thrilling adventure
+            </span>
+            . From majestic forts and sacred temples to dense forests teeming
+            with wildlife, MP is an enchanting blend of past and present.
           </p>
 
-          <h3 className="text-2xl font-semibold mt-4">India’s Tiger State!</h3>
-          <p>
-            Wildlife is a major part of Madhya Pradesh tourism. It is India’s
-            “Tiger State”, with more than 526 tigers... Bandhavgarh National
-            Park has the highest tiger density in India. Other famous parks
-            include Kanha, Pench, Panna, etc.
+          <p className="text-lg max-w-prose mx-auto text-center">
+            Nestled in the center of India, MP shares borders with 6 states:{" "}
+            <span className="font-medium text-gray-700">
+              Chhattisgarh, Maharashtra, Gujarat, Rajasthan, and Uttar Pradesh
+            </span>
+            .
           </p>
 
-          <h3 className="text-2xl font-semibold mt-4">
-            Heritage dating back thousands of years!
-          </h3>
-          <p>
-            The rich heritage of Madhya Pradesh can be seen in its forts, caves,
-            monuments... Notable UNESCO World Heritage Sites include Bhimbetka
-            Rock Shelters, Khajuraho Group of Monuments, and Sanchi Stupas.
-          </p>
-          <p>
-            Gwalior and Orchha are also UNESCO heritage cities. Must-visit
-            spots: Ram Raja Temple, Chaturbhuj Temple, and Laxmi Narayan Temple.
-          </p>
+          {/* Feature Cards */}
+          <div className="grid md:grid-cols-3 gap-8   mx-auto">
+            <div className="bg-yellow-50 rounded-xl p-6 shadow-md hover:shadow-yellow-300 transition-shadow duration-300">
+              <h3 className="text-2xl font-bold text-gray-900 mb-3 flex items-center gap-2">
+                🐅 India’s Tiger State
+              </h3>
+              <p className="text-md text-gray-800">
+                Home to over{" "}
+                <span className="font-bold text-yellow-600">526 tigers</span>,
+                MP is the "Tiger State of India". Explore iconic reserves like{" "}
+                <span className="font-medium">Bandhavgarh</span>,{" "}
+                <span className="font-medium">Kanha</span>,{" "}
+                <span className="font-medium">Pench</span>, and{" "}
+                <span className="font-medium">Panna</span>.
+              </p>
+            </div>
 
-          <h3 className="text-2xl font-semibold mt-4">
-            Numerous options for adventure too!
-          </h3>
-          <p>
-            Madhya Pradesh offers parasailing, river rafting, trekking, camping
-            and more. Mountaineering is popular in Maikal Hills and Pachmarhi
-            between November–April.
-          </p>
+            <div className="bg-yellow-50 rounded-xl p-6 shadow-md hover:shadow-yellow-300 transition-shadow duration-300">
+              <h3 className="text-2xl font-bold text-gray-900 mb-3 flex items-center gap-2">
+                🏛️ A Treasure Trove of Heritage
+              </h3>
+              <p className="text-md text-gray-800 mb-2">
+                Discover ancient forts, temples, and caves. Must-see UNESCO
+                sites include{" "}
+                <span className="font-semibold">Bhimbetka Rock Shelters</span>,{" "}
+                <span className="font-semibold">Khajuraho Monuments</span>, and{" "}
+                <span className="font-semibold">Sanchi Stupas</span>.
+              </p>
+              <p className="text-md text-gray-800">
+                Heritage cities <span className="font-medium">Gwalior</span> and{" "}
+                <span className="font-medium">Orchha</span> offer gems like{" "}
+                <span className="italic">Ram Raja Temple</span> and{" "}
+                <span className="italic">Chaturbhuj Temple</span>.
+              </p>
+            </div>
+
+            <div className="bg-yellow-50 rounded-xl p-6 shadow-md hover:shadow-yellow-300 transition-shadow duration-300">
+              <h3 className="text-2xl font-bold text-gray-900 mb-3 flex items-center gap-2">
+                ⛰️ Thrill Meets Tranquility
+              </h3>
+              <p className="text-md text-gray-800">
+                Adventure seekers can enjoy{" "}
+                <span className="font-medium">
+                  parasailing, rafting, trekking, and camping
+                </span>
+                . Top spots: <span className="font-semibold">Maikal Hills</span>{" "}
+                & <span className="font-semibold">Pachmarhi</span>, best visited
+                from <span className="italic">November to April</span>.
+              </p>
+            </div>
+          </div>
         </motion.section>
 
         {/* Sections */}

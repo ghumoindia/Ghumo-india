@@ -47,10 +47,15 @@
         "name": "Kerala",
         "tagline": "God’s Own Country",
         "image": "public/assets/images/kerala.jpg",
+        "imageArray":  ["public/assets/images/mp1.jpg", "public/assets/images/mp-2.jpg", "public/assets/images/mp-3.webp", "public/assets/images/mp5.webp"], 
         "slug": "kerala",
         "description": "Kerala is famous for its backwaters, lush greenery, and ayurvedic traditions.",
         "highlights": [
           { "title": "Alleppey Backwaters", "image": "public/assets/highlights/alleppey.jpg" },
+          { "title": "Munnar Tea Gardens", "image": "public/assets/highlights/munnar.jpg" },
+          { "title": "Alleppey Backwaters", "image": "public/assets/highlights/alleppey.jpg" },
+          { "title": "Munnar Tea Gardens", "image": "public/assets/highlights/munnar.jpg" }, { "title": "Alleppey Backwaters", "image": "public/assets/highlights/alleppey.jpg" },
+          { "title": "Munnar Tea Gardens", "image": "public/assets/highlights/munnar.jpg" }, { "title": "Alleppey Backwaters", "image": "public/assets/highlights/alleppey.jpg" },
           { "title": "Munnar Tea Gardens", "image": "public/assets/highlights/munnar.jpg" }
         ],
         "food": [
@@ -521,6 +526,7 @@
         "name": "Madhya Pradesh",
         "tagline": "The Heart of Incredible India",
         "image": "public/assets/images/madhyapradesh.jpg",
+        "imageArray":  ["public/assets/images/mp1.jpg", "public/assets/images/mp-2.jpg", "public/assets/images/mp-3.webp", "public/assets/images/mp5.webp"], 
         "slug": "madhya-pradesh",
         "description": "Madhya Pradesh is a land of grand forts, cave temples, and pristine wildlife sanctuaries.",
         "highlights": [
