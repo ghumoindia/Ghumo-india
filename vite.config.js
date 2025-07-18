@@ -11,5 +11,5 @@ export default defineConfig({
       utils: path.resolve(__dirname, "src/lib/utils"),
     },
   },
-  base: "/Ghumo-india/",
+  base: "",
 });
