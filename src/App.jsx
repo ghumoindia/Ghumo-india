@@ -6,8 +6,8 @@ import Hero from "./components/Hero";
 import DiscoverIndia from "./components/DiscoverIndia";
 import Footer from "./components/Footer";
 
-import Home from "./pages/Home";
-import StatePage from "./pages/StatePage";
+import Home from "./pages/Home/Home";
+import StatePage from "./pages/Statepage/StatePage";
 import Experiences from "./pages/Experiences";
 import Destinations from "./pages/Destinations";
 import About from "./pages/About";

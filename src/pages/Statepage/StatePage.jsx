@@ -14,35 +14,60 @@ import {
 } from "@/components/components/ui/carousel";
 import { Card, CardContent } from "@/components/components/ui/card";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-
-const fadeUp = {
-  hidden: { opacity: 0, y: 60 },
-  visible: { opacity: 1, y: 0 },
-};
-
-const zoomIn = {
-  hidden: { scale: 0.9, opacity: 0 },
-  visible: { scale: 1, opacity: 1 },
-};
-
-const images = [""];
+import { useDispatch, useSelector } from "react-redux";
+import {
+  fetchCitiesDataByIds,
+  fetchFoodsDataByIds,
+  fetchPlaceDataByIds,
+  fetchStateById,
+} from "../../hooks/slices/stateSlice";
+import SectionCarousel from "@/components/SectionCarousel";
+import fetchDataByIds from "../../utils/fetchDataByIds";
 
 const StateWorld = () => {
   const { slug } = useParams();
-  const [state, setState] = useState(null);
+  // const [state, setState] = useState(null);
   const [audio, setAudio] = useState(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [current, setCurrent] = useState(0);
-  console.log("sttat data ", state);
+  const [placeData, setPlaceData] = useState([]);
+  const [citiesData, setCitiesData] = useState([]);
+  const [foodsData, setFoodsData] = useState([]);
+  const state = useSelector((state) => state.states.currentState);
+  const dispatch = useDispatch();
+  console.log("sttat data ", state, slug, placeData);
+
   useEffect(() => {
-    const fetchData = async () => {
-      const res = await fetch("/data/states.json");
-      const data = await res.json();
-      const found = data.find((s) => s.slug === slug);
-      setState(found);
-    };
-    fetchData();
+    dispatch(fetchStateById(slug));
   }, [slug]);
+
+  useEffect(() => {
+    if (state && state.placeIds.length > 0) {
+      fetchDataByIds(
+        dispatch,
+        fetchPlaceDataByIds,
+        state.placeIds,
+        setPlaceData
+      );
+    }
+    if (state && state?.cityIds?.length > 0) {
+      fetchDataByIds(
+        dispatch,
+        fetchCitiesDataByIds,
+        state.cityIds,
+        setCitiesData
+      );
+    }
+
+    if (state && state.foodIds.length > 0) {
+      fetchDataByIds(
+        dispatch,
+        fetchFoodsDataByIds,
+        state.foodIds,
+        setFoodsData
+      );
+    }
+  }, [state]);
 
   useEffect(() => {
     if (state && state.music) {
@@ -78,57 +103,8 @@ const StateWorld = () => {
     );
 
   const goTo = (index) => {
-    if (index >= 0 && index < state?.imageArray?.length) setCurrent(index);
+    if (index >= 0 && index < state?.slideshowImages?.length) setCurrent(index);
   };
-  const Section = ({ title, items, isImageOnly = false }) => (
-    <motion.div
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true }}
-      variants={fadeUp}
-      className="font-montserrat text-black"
-    >
-      <h2 className="text-2xl md:text-3xl font-semibold mb-6 text-center md:text-left">
-        {title}
-      </h2>
-
-      <Carousel className="relative pb-12 mx-5">
-        {" "}
-        {/* Add space for buttons */}
-        <CarouselContent className="mx-2">
-          {items.map((item, i) => (
-            <CarouselItem
-              key={i}
-              className="md:basis-1/2 lg:basis-1/3 p-2 " // use padding for spacing instead of grid
-            >
-              <motion.div
-                className="bg-white rounded-lg shadow-sm hover:shadow-lg transition-shadow duration-300 overflow-hidden"
-                variants={zoomIn}
-              >
-                <img
-                  src={`/${isImageOnly ? item : item.image}`}
-                  alt={item.name || item.title || `Item ${i}`}
-                  className="w-full h-48 md:h-56 object-cover"
-                />
-                {!isImageOnly && (
-                  <div className="p-3 text-center">
-                    <p className="text-base font-medium text-gray-800">
-                      {item.name || item.title}
-                    </p>
-                  </div>
-                )}
-              </motion.div>
-            </CarouselItem>
-          ))}
-        </CarouselContent>
-        {/* Bottom Centered Buttons */}
-        <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex gap-4 z-50">
-          <CarouselPrevious className="bg-white rounded-full cursor-pointer shadow p-2 hover:bg-black hover:text-white hover:scale-105 transition-all duration-300  " />
-          <CarouselNext className="bg-white rounded-full shadow p-2 hover:bg-black hover:text-white hover:scale-105 transition-all duration-300 cursor-pointer" />
-        </div>
-      </Carousel>
-    </motion.div>
-  );
 
   return (
     <div
@@ -145,8 +121,8 @@ const StateWorld = () => {
           <CarouselContent>
             <CarouselItem className="relative h-[500px]">
               <img
-                src={`/${
-                  state?.imageArray ? state?.imageArray[current] : state?.image
+                src={`${import.meta.env.VITE_BACKEND_URL}${
+                  state?.slideshowImages[current]?.url
                 }`}
                 alt={`Slide ${current + 1}`}
                 className="w-full h-full  object-cover"
@@ -154,11 +130,11 @@ const StateWorld = () => {
 
               {/* Thumbnail strip */}
               <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 bg-white/80 px-2 py-1 rounded shadow">
-                {state?.imageArray ? (
-                  state?.imageArray.map((img, idx) => (
+                {state?.slideshowImages.length > 0 ? (
+                  state?.slideshowImages.map((img, idx) => (
                     <img
                       key={idx}
-                      src={`/${img}`}
+                      src={`${import.meta.env.VITE_BACKEND_URL}${img?.url}`}
                       onClick={() => goTo(idx)}
                       className={`h-12 w-16 object-contain cursor-pointer rounded ${
                         current === idx ? "ring-2 ring-blue-500" : "opacity-60"
@@ -168,7 +144,9 @@ const StateWorld = () => {
                 ) : (
                   <img
                     // key={idx}
-                    src={`/${state?.image}`}
+                    src={`${import.meta.env.VITE_BACKEND_URL}${
+                      state?.coverImage?.url
+                    }`}
                     // onClick={() => goTo(idx)}
                     className={`h-12 w-16 object-contain cursor-pointer rounded ring-2 ring-blue-500  `}
                   />
@@ -267,15 +245,14 @@ const StateWorld = () => {
         </motion.section>
 
         {/* Sections */}
-        {state.highlights && (
-          <Section title="Top Highlights" items={state.highlights} />
+        {citiesData.length > 0 && (
+          <SectionCarousel CarouselData={citiesData} title="Famous Cities" />
         )}
-        {state.food && <Section title="Famous Cuisine" items={state.food} />}
-        {state.festivals && (
-          <Section title="Festivals" items={state.festivals} />
+        {placeData.length > 0 && (
+          <SectionCarousel CarouselData={placeData} title={"Famous Places"} />
         )}
-        {state.gallery && (
-          <Section title="Gallery" items={state.gallery} isImageOnly={true} />
+        {foodsData.length > 0 && (
+          <SectionCarousel CarouselData={foodsData} title="Famous Foods" />
         )}
       </div>
     </div>

@@ -1,20 +1,27 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import Hero from "../components/Hero";
-import DiscoverIndia from "../components/DiscoverIndia";
+import Hero from "../../components/Hero";
+import DiscoverIndia from "../../components/DiscoverIndia";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchAllStates } from "../../hooks/slices/stateSlice";
 
 const Home = () => {
-  const [states, setStates] = useState([]);
+  // const [states, setStates] = useState([]);
+  const states = useSelector((state) => state.states.statesList);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  // useEffect(() => {
+  //   fetch("/data/states.json")
+  //     .then((res) => res.json())
+  //     .then((data) => setStates(data))
+  //     .catch((err) => console.error("Error loading states:", err));
+  // }, []);
 
   useEffect(() => {
-    fetch("/data/states.json")
-      .then((res) => res.json())
-      .then((data) => setStates(data))
-      .catch((err) => console.error("Error loading states:", err));
+    dispatch(fetchAllStates());
   }, []);
-
   const handleClick = (slug) => {
     navigate(`/state/${slug}`);
   };
@@ -24,12 +31,9 @@ const Home = () => {
       <section>
         <Hero />
       </section>
-      {/* <div style={{ background: "#efecec !important" }}>
-        <DiscoverIndia />
-      </div> */}
+
       <div>
         <section className="relative min-h-screen bg-gradient-to-br from-[#1e1d1d] via-[#0e0e0e] to-[#070707] text-white overflow-hidden my-12 bg-white">
-          {/* Glowing Mandala Background */}
           <div className="absolute inset-0 z-0 pointer-events-none bg-white">
             <div className="absolute w-[60rem] h-[60rem] bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.05),transparent)] top-[-30rem] left-[-20rem]" />
             <div className="absolute w-[40rem] h-[40rem] bg-[radial-gradient(circle_at_center,rgba(255,255,0,0.04),transparent)] bottom-[-20rem] right-[-10rem]" />
@@ -56,10 +60,10 @@ const Home = () => {
 
             {/* State Cards */}
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10">
-              {states.map((state) => (
+              {states?.map((state) => (
                 <motion.div
                   key={state.id}
-                  onClick={() => handleClick(state.slug)}
+                  onClick={() => handleClick(state._id)}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.4 }}
@@ -68,18 +72,20 @@ const Home = () => {
                 >
                   {/* Image Section */}
                   <img
-                    src={state.image}
-                    alt={state.name}
+                    src={`${import.meta.env.VITE_BACKEND_URL}${
+                      state.coverImage.url
+                    }`}
+                    alt={state.title}
                     className="w-full h-48 object-cover rounded-t-xl"
                   />
 
                   {/* Text Section */}
                   <div className="p-4">
                     <h3 className="text-lg font-semibold text-gray-800">
-                      {state.name}
+                      {state.title}
                     </h3>
                     <p className="text-sm text-gray-500 mt-1">
-                      {state.tagline}
+                      {state.subtitle}
                     </p>
                   </div>
                 </motion.div>
