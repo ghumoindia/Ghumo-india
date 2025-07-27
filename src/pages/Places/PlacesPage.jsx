@@ -15,63 +15,59 @@ import {
 import { Card, CardContent } from "@/components/components/ui/card";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchStateById } from "../../hooks/slices/stateSlice";
+
 import SectionCarousel from "@/components/SectionCarousel";
 import fetchDataByIds from "../../utils/fetchDataByIds";
+import { fetchCitiesByIds } from "../../hooks/slices/citySlice";
+import { fetchPlaceDataByIds } from "../../hooks/slices/placesSlice";
 import {
   fetchCitiesDataByIds,
   fetchFoodsDataByIds,
-  fetchPlaceDataByIds,
 } from "../../hooks/slices/byIdsSlice";
 
-const StateWorld = () => {
+const PlacesPage = () => {
   const { slug } = useParams();
-  // const [state, setState] = useState(null);
+  // const [Places, setState] = useState(null);
   const [audio, setAudio] = useState(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [current, setCurrent] = useState(0);
-  const [placeData, setPlaceData] = useState([]);
   const [citiesData, setCitiesData] = useState([]);
   const [foodsData, setFoodsData] = useState([]);
-  const state = useSelector((state) => state.states.currentState);
+
+  const Places = useSelector((places) => places.places.currentPlace);
   const dispatch = useDispatch();
-  console.log("sttat data ", state, slug, placeData);
+  console.log("sttat data ", Places, slug);
 
   useEffect(() => {
-    dispatch(fetchStateById(slug));
-  }, [slug]);
-
-  useEffect(() => {
-    if (state && state.placeIds.length > 0) {
-      fetchDataByIds(
-        dispatch,
-        fetchPlaceDataByIds,
-        state.placeIds,
-        setPlaceData
-      );
+    if (slug) {
+      console.log("Fetching place data for slug:", slug);
+      dispatch(fetchPlaceDataByIds(slug));
     }
-    if (state && state?.cityIds?.length > 0) {
+  }, [slug, dispatch]);
+
+  useEffect(() => {
+    if (Places && Places?.cityIds?.length > 0) {
       fetchDataByIds(
         dispatch,
         fetchCitiesDataByIds,
-        state.cityIds,
+        Places.cityIds,
         setCitiesData
       );
     }
 
-    if (state && state.foodIds.length > 0) {
+    if (Places && Places.foodIds.length > 0) {
       fetchDataByIds(
         dispatch,
         fetchFoodsDataByIds,
-        state.foodIds,
+        Places.foodIds,
         setFoodsData
       );
     }
-  }, [state]);
+  }, [Places]);
 
   useEffect(() => {
-    if (state && state.music) {
-      const bgAudio = new Audio(`/${state.music}`);
+    if (Places && Places.music) {
+      const bgAudio = new Audio(`/${Places.music}`);
       bgAudio.loop = true;
       bgAudio.volume = 0.4;
       setAudio(bgAudio);
@@ -86,7 +82,7 @@ const StateWorld = () => {
         audio.currentTime = 0;
       }
     };
-  }, [state]);
+  }, [Places]);
 
   const toggleAudio = () => {
     if (audio) {
@@ -95,7 +91,7 @@ const StateWorld = () => {
     }
   };
 
-  if (!state)
+  if (!Places)
     return (
       <div className="text-center mt-16 text-red-500 font-bold text-3xl">
         Loading Incredible Experience...
@@ -103,7 +99,8 @@ const StateWorld = () => {
     );
 
   const goTo = (index) => {
-    if (index >= 0 && index < state?.slideshowImages?.length) setCurrent(index);
+    if (index >= 0 && index < Places?.slideshowImages?.length)
+      setCurrent(index);
   };
 
   return (
@@ -111,7 +108,7 @@ const StateWorld = () => {
       className="  font-[Poppins] text-white"
       style={{
         background: `linear-gradient(to bottom, ${
-          state.bgTheme || "#111827"
+          Places.bgTheme || "#111827"
         }, #000)`,
       }}
     >
@@ -122,7 +119,7 @@ const StateWorld = () => {
             <CarouselItem className="relative h-[500px]">
               <img
                 src={`${import.meta.env.VITE_BACKEND_URL}${
-                  state?.slideshowImages[current]?.url
+                  Places?.slideshowImages[current]?.url
                 }`}
                 alt={`Slide ${current + 1}`}
                 className="w-full h-full  object-cover"
@@ -130,8 +127,8 @@ const StateWorld = () => {
 
               {/* Thumbnail strip */}
               <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 bg-white/80 px-2 py-1 rounded shadow">
-                {state?.slideshowImages.length > 0 ? (
-                  state?.slideshowImages.map((img, idx) => (
+                {Places?.slideshowImages.length > 0 ? (
+                  Places?.slideshowImages.map((img, idx) => (
                     <img
                       key={idx}
                       src={`${import.meta.env.VITE_BACKEND_URL}${img?.url}`}
@@ -145,7 +142,7 @@ const StateWorld = () => {
                   <img
                     // key={idx}
                     src={`${import.meta.env.VITE_BACKEND_URL}${
-                      state?.coverImage?.url
+                      Places?.coverImage?.url
                     }`}
                     // onClick={() => goTo(idx)}
                     className={`h-12 w-16 object-contain cursor-pointer rounded ring-2 ring-blue-500  `}
@@ -195,12 +192,12 @@ const StateWorld = () => {
           <div className="grid md:grid-cols-3 gap-8   mx-auto">
             <div className="bg-yellow-50 rounded-xl p-6 shadow-md hover:shadow-yellow-300 transition-shadow duration-300">
               <h3 className="text-2xl font-bold text-gray-900 mb-3 flex items-center gap-2">
-                🐅 India’s Tiger State
+                🐅 India’s Tiger Places
               </h3>
               <p className="text-md text-gray-800">
                 Home to over{" "}
                 <span className="font-bold text-yellow-600">526 tigers</span>,
-                MP is the "Tiger State of India". Explore iconic reserves like{" "}
+                MP is the "Tiger Places of India". Explore iconic reserves like{" "}
                 <span className="font-medium">Bandhavgarh</span>,{" "}
                 <span className="font-medium">Kanha</span>,{" "}
                 <span className="font-medium">Pench</span>, and{" "}
@@ -246,29 +243,15 @@ const StateWorld = () => {
 
         {/* Sections */}
         {citiesData.length > 0 && (
-          <SectionCarousel
-            CarouselData={citiesData}
-            title={"Famous Cities"}
-            type={"cities"}
-          />
+          <SectionCarousel CarouselData={citiesData} title="Famous Cities" />
         )}
-        {placeData.length > 0 && (
-          <SectionCarousel
-            CarouselData={placeData}
-            title={"Famous Places"}
-            type={"places"}
-          />
-        )}
+
         {foodsData.length > 0 && (
-          <SectionCarousel
-            CarouselData={foodsData}
-            title={"Famous Foods"}
-            type={"foods"}
-          />
+          <SectionCarousel CarouselData={foodsData} title="Famous Foods" />
         )}
       </div>
     </div>
   );
 };
 
-export default StateWorld;
+export default PlacesPage;

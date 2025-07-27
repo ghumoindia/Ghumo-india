@@ -7,8 +7,10 @@ import {
   CarouselPrevious,
 } from "./components/ui/carousel";
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 
-const SectionCarousel = ({ CarouselData, title }) => {
+const SectionCarousel = ({ CarouselData, title, type }) => {
+  const navigate = useNavigate();
   const fadeUp = {
     hidden: { opacity: 0, y: 60 },
     visible: { opacity: 1, y: 0 },
@@ -17,6 +19,17 @@ const SectionCarousel = ({ CarouselData, title }) => {
   const zoomIn = {
     hidden: { scale: 0.9, opacity: 0 },
     visible: { scale: 1, opacity: 1 },
+  };
+
+  const handleClick = (slug) => {
+    if (type === "cities") {
+      return navigate(`/city/${slug}`);
+    } else if (type === "places") {
+      return navigate(`/places/${slug}`);
+    } else if (type === "foods") {
+      console.log("Navigating to foods with slug:", slug);
+      return navigate(`/foods/${slug}`);
+    }
   };
   console.log("CarouselData", CarouselData);
   return (
@@ -39,7 +52,8 @@ const SectionCarousel = ({ CarouselData, title }) => {
             {CarouselData.map((item, i) => (
               <CarouselItem
                 key={i}
-                className="md:basis-1/2 lg:basis-1/3 p-2 " // use padding for spacing instead of grid
+                className="md:basis-1/2 lg:basis-1/3 p-2 "
+                onClick={() => handleClick(item._id)} // Handle click to navigate
               >
                 <motion.div
                   className="bg-white rounded-lg shadow-sm hover:shadow-lg transition-shadow duration-300 overflow-hidden"

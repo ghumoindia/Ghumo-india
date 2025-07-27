@@ -17,30 +17,6 @@ export const fetchStateById = createAsyncThunk(
   }
 );
 
-export const fetchPlaceDataByIds = createAsyncThunk(
-  "states/fetchByAllIds",
-  async (ids) => {
-    const response = await Api.post(EndPointes.getStateBySlug, ids);
-    return response.data;
-  }
-);
-
-export const fetchCitiesDataByIds = createAsyncThunk(
-  "state/fetchCitiesByIds",
-  async (ids) => {
-    const response = await Api.post(EndPointes.getCitiesByIds, ids);
-    return response.data;
-  }
-);
-
-export const fetchFoodsDataByIds = createAsyncThunk(
-  "state/fetchFoodsByIds",
-  async (ids) => {
-    const response = await Api.post(EndPointes.getFoodsByIds, ids);
-    return response.data;
-  }
-);
-
 const stateSlice = createSlice({
   name: "states",
   initialState: {
