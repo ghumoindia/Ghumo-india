@@ -73,7 +73,7 @@ const Home = () => {
                   {/* Image Section */}
                   <img
                     src={`${import.meta.env.VITE_BACKEND_URL}${
-                      state.coverImage.url
+                      state?.coverImage?.url
                     }`}
                     alt={state.title}
                     className="w-full h-48 object-cover rounded-t-xl"

@@ -29,6 +29,23 @@ export const fetchFoodsDataByIds = createAsyncThunk(
   }
 );
 
+export const fetchActivitiesDataByIds = createAsyncThunk(
+  "byIds/fetchActivities",
+  async (ids) => {
+    const response = await Api.post(EndPointes.getActivitiesByIds, ids);
+    console.log("Activities response:", response);
+    return response.data;
+  }
+);
+
+export const fetchHotelsDataByIds = createAsyncThunk(
+  "byIds/fetchHotels",
+  async (ids) => {
+    const response = await Api.post(EndPointes.getHotelsByIds, ids);
+    return response.data;
+  }
+);
+
 // Slice
 const byIdsSlice = createSlice({
   name: "byIds",

@@ -19,8 +19,10 @@ import { fetchStateById } from "../../hooks/slices/stateSlice";
 import SectionCarousel from "@/components/SectionCarousel";
 import fetchDataByIds from "../../utils/fetchDataByIds";
 import {
+  fetchActivitiesDataByIds,
   fetchCitiesDataByIds,
   fetchFoodsDataByIds,
+  fetchHotelsDataByIds,
   fetchPlaceDataByIds,
 } from "../../hooks/slices/byIdsSlice";
 
@@ -33,9 +35,11 @@ const StateWorld = () => {
   const [placeData, setPlaceData] = useState([]);
   const [citiesData, setCitiesData] = useState([]);
   const [foodsData, setFoodsData] = useState([]);
+  const [activitiesData, setActivitiesData] = useState([]);
+  const [hotelsData, setHotelsData] = useState([]);
   const state = useSelector((state) => state.states.currentState);
   const dispatch = useDispatch();
-  console.log("sttat data ", state, slug, placeData);
+  console.log("sttat data ", state, slug, activitiesData);
 
   useEffect(() => {
     dispatch(fetchStateById(slug));
@@ -65,6 +69,22 @@ const StateWorld = () => {
         fetchFoodsDataByIds,
         state.foodIds,
         setFoodsData
+      );
+    }
+    if (state && state.activitiesIds.length > 0) {
+      fetchDataByIds(
+        dispatch,
+        fetchActivitiesDataByIds,
+        state.activitiesIds,
+        setActivitiesData
+      );
+    }
+    if (state && state.hotelsIds.length > 0) {
+      fetchDataByIds(
+        dispatch,
+        fetchHotelsDataByIds,
+        state.hotelsIds,
+        setHotelsData
       );
     }
   }, [state]);
@@ -266,6 +286,22 @@ const StateWorld = () => {
             type={"foods"}
           />
         )}
+        {activitiesData.length > 0 && (
+          <SectionCarousel
+            CarouselData={activitiesData}
+            title={"Famous Activities"}
+            type={"activities"}
+          />
+        )}
+        {hotelsData.length > 0 && (
+          <SectionCarousel
+            CarouselData={hotelsData}
+            title={"Famous Hotels"}
+            type={"hotels"}
+          />
+        )}
+
+        {/* Audio Control */}
       </div>
     </div>
   );
