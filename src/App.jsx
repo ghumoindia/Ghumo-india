@@ -15,6 +15,7 @@ import "react-slideshow-image/dist/styles.css";
 import CityPage from "./pages/Citypage/CityPage";
 import FoodsPage from "./pages/Foods/FoodsPage";
 import PlacesPage from "./pages/Places/PlacesPage";
+import TravelCalendar from "./pages/calender/TravelCalendar";
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
         <Route path="/experiences" element={<Experiences />} />
         <Route path="/destinations" element={<Destinations />} />
         <Route path="/about" element={<About />} />
+        <Route path="/calender" element={<TravelCalendar />} />
       </Routes>
       <Footer />
     </>

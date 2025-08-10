@@ -4,6 +4,7 @@ import citySlice from "./slices/citySlice";
 import byIdsSlice from "./slices/byIdsSlice";
 import placesSlice from "./slices/placesSlice";
 import foodsSlice from "./slices/foodsSlice";
+import calenderSlice from "./slices/calenderSlice";
 
 const store = configureStore({
   reducer: {
@@ -12,6 +13,7 @@ const store = configureStore({
     byIds: byIdsSlice,
     places: placesSlice,
     foods: foodsSlice,
+    calender: calenderSlice,
   },
 });
 

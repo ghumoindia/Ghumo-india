@@ -9,6 +9,7 @@ const EndPointes = {
   getCitiesDataById: "/user/v1/cities/getCitiesById",
   getFoodsDataById: "/user/v1/foods/getFoodById",
   getPlaceDataByIds: "/user/v1/places/getPlacesById",
+  fetchAllCalendar: "/user/v1/calender",
 };
 
 export default EndPointes;

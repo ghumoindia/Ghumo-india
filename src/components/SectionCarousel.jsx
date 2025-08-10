@@ -69,7 +69,7 @@ const SectionCarousel = ({ CarouselData, title, type }) => {
                   {
                     <div className="p-3 text-center">
                       <p className="text-base font-medium text-gray-800">
-                        {item.title}
+                        {item.title || item.name}
                       </p>
                     </div>
                   }

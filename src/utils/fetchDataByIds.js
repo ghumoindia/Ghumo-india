@@ -6,7 +6,7 @@ const fetchDataByIds = async (dispatch, apiAction, ids, setData) => {
     const result = await dispatch(apiAction({ ids }));
     if (result?.payload) {
       setData(result.payload);
-      console.log("✅ Data fetched by IDs:", result.payload, ids);
+      console.log("✅ Data fetched by IDs:", result.payload, ids,);
     } else {
       console.error("⚠️ No data returned for IDs:", ids);
     }
