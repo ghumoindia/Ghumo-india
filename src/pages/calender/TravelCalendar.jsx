@@ -16,7 +16,7 @@ import {
 import { useDispatch } from "react-redux";
 import { getMonthCalendar } from "../../hooks/slices/calenderSlice";
 import toast from "react-hot-toast";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 const TravelCalendar = () => {
   const [selectedMonth, setSelectedMonth] = useState(null);
@@ -26,340 +26,7 @@ const TravelCalendar = () => {
   const [showMonths, setShowMonths] = useState(true);
   const navigate = useNavigate();
   const dispatch = useDispatch();
-
-  // Enhanced data structure with image placeholders and more details
-  // const monthlyDestinations = {
-  //   1: {
-  //     // January
-  //     month: "January",
-  //     season: "Winter",
-  //     icon: <Snowflake className="w-6 h-6 text-blue-400" />,
-  //     weather: "Cool and Pleasant",
-  //     description:
-  //       "Perfect time for desert exploration and southern India tours",
-  //     states: [
-  //       {
-  //         name: "Rajasthan",
-  //         image:
-  //           "https://images.unsplash.com/photo-1477587458883-47145ed94245?w=400&h=250&fit=crop&crop=center",
-  //         cities: ["Jaipur", "Udaipur", "Jodhpur", "Jaisalmer"],
-  //         reason: "Perfect weather for desert exploration and palace tours",
-  //         temp: "10-25°C",
-  //         rating: 4.8,
-  //         bestFor: [
-  //           "Desert Safari",
-  //           "Palace Tours",
-  //           "Cultural Festivals",
-  //           "Photography",
-  //         ],
-  //         famousFor: "Pink City & Desert Culture",
-  //       },
-  //       {
-  //         name: "Kerala",
-  //         image:
-  //           "https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?w=400&h=250&fit=crop&crop=center",
-  //         cities: ["Kochi", "Munnar", "Alleppey", "Thekkady"],
-  //         reason: "Cool climate ideal for backwaters and hill stations",
-  //         temp: "23-32°C",
-  //         rating: 4.7,
-  //         bestFor: ["Backwater Cruise", "Tea Gardens", "Wildlife", "Ayurveda"],
-  //         famousFor: "God's Own Country",
-  //       },
-  //       {
-  //         name: "Goa",
-  //         image:
-  //           "https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?w=400&h=250&fit=crop&crop=center",
-  //         cities: ["Panaji", "Margao", "Calangute", "Arambol"],
-  //         reason: "Peak tourist season with perfect beach weather",
-  //         temp: "20-32°C",
-  //         rating: 4.6,
-  //         bestFor: [
-  //           "Beach Life",
-  //           "Water Sports",
-  //           "Nightlife",
-  //           "Portuguese Heritage",
-  //         ],
-  //         famousFor: "Beach Paradise",
-  //       },
-  //     ],
-  //   },
-  //   2: {
-  //     // February
-  //     month: "February",
-  //     season: "Winter",
-  //     icon: <Snowflake className="w-6 h-6 text-blue-400" />,
-  //     weather: "Cool and Pleasant",
-  //     description: "Ideal month for desert states and coastal regions",
-  //     states: [
-  //       {
-  //         name: "Rajasthan",
-  //         image:
-  //           "https://images.unsplash.com/photo-1599661046827-dacde7996a93?w=400&h=250&fit=crop&crop=center",
-  //         cities: ["Jaipur", "Udaipur", "Mount Abu", "Pushkar"],
-  //         reason: "Perfect weather continues for heritage tours",
-  //         temp: "12-28°C",
-  //         rating: 4.9,
-  //         bestFor: [
-  //           "Heritage Tours",
-  //           "Desert Safari",
-  //           "Folk Culture",
-  //           "Photography",
-  //         ],
-  //         famousFor: "Royal Heritage",
-  //       },
-  //       {
-  //         name: "Karnataka",
-  //         image:
-  //           "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=250&fit=crop&crop=center",
-  //         cities: ["Bangalore", "Mysore", "Hampi", "Coorg"],
-  //         reason: "Pleasant weather for historical sites",
-  //         temp: "18-30°C",
-  //         rating: 4.5,
-  //         bestFor: ["Historical Sites", "Palaces", "Coffee Tours", "Gardens"],
-  //         famousFor: "Garden City & Ancient Ruins",
-  //       },
-  //       {
-  //         name: "Tamil Nadu",
-  //         image:
-  //           "https://images.unsplash.com/photo-1582510003544-4d00b7f74220?w=400&h=250&fit=crop&crop=center",
-  //         cities: ["Chennai", "Madurai", "Kanyakumari", "Pondicherry"],
-  //         reason: "Comfortable climate for temple tours",
-  //         temp: "20-30°C",
-  //         rating: 4.4,
-  //         bestFor: [
-  //           "Temple Tours",
-  //           "Beach Visits",
-  //           "Cultural Sites",
-  //           "French Architecture",
-  //         ],
-  //         famousFor: "Temple Architecture",
-  //       },
-  //     ],
-  //   },
-  //   3: {
-  //     // March
-  //     month: "March",
-  //     season: "Spring",
-  //     icon: <Sun className="w-6 h-6 text-yellow-400" />,
-  //     weather: "Warm and Pleasant",
-  //     description: "Spring arrives with blooming flowers in hill stations",
-  //     states: [
-  //       {
-  //         name: "Himachal Pradesh",
-  //         image:
-  //           "https://images.unsplash.com/photo-1605640840605-14ac1855827b?w=400&h=250&fit=crop&crop=center",
-  //         cities: ["Shimla", "Manali", "Dharamshala", "Kasol"],
-  //         reason: "Snow melting season perfect for hill stations",
-  //         temp: "15-25°C",
-  //         rating: 4.7,
-  //         bestFor: [
-  //           "Mountain Views",
-  //           "Adventure Sports",
-  //           "Tibetan Culture",
-  //           "Trekking",
-  //         ],
-  //         famousFor: "Queen of Hills",
-  //       },
-  //       {
-  //         name: "Uttarakhand",
-  //         image:
-  //           "https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?w=400&h=250&fit=crop&crop=center",
-  //         cities: ["Dehradun", "Mussoorie", "Rishikesh", "Haridwar"],
-  //         reason: "Ideal for spiritual and adventure tourism",
-  //         temp: "18-28°C",
-  //         rating: 4.6,
-  //         bestFor: [
-  //           "Yoga Retreats",
-  //           "River Rafting",
-  //           "Pilgrimage",
-  //           "Mountain Views",
-  //         ],
-  //         famousFor: "Dev Bhoomi",
-  //       },
-  //       {
-  //         name: "West Bengal",
-  //         image:
-  //           "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=250&fit=crop&crop=center",
-  //         cities: ["Darjeeling", "Kalimpong", "Kolkata", "Sundarbans"],
-  //         reason: "Pleasant weather in hills and cultural exploration",
-  //         temp: "15-28°C",
-  //         rating: 4.3,
-  //         bestFor: [
-  //           "Tea Gardens",
-  //           "Toy Train",
-  //           "Cultural Heritage",
-  //           "Wildlife",
-  //         ],
-  //         famousFor: "Cultural Capital",
-  //       },
-  //     ],
-  //   },
-  //   4: {
-  //     // April
-  //     month: "April",
-  //     season: "Spring/Summer",
-  //     icon: <Sun className="w-6 h-6 text-orange-400" />,
-  //     weather: "Warm",
-  //     description: "Spring blooms in Kashmir while hill stations come alive",
-  //     states: [
-  //       {
-  //         name: "Jammu & Kashmir",
-  //         image:
-  //           "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=250&fit=crop&crop=center",
-  //         cities: ["Srinagar", "Gulmarg", "Pahalgam", "Sonamarg"],
-  //         reason: "Spring season with famous tulip gardens",
-  //         temp: "12-23°C",
-  //         rating: 4.9,
-  //         bestFor: [
-  //           "Tulip Gardens",
-  //           "Shikara Rides",
-  //           "Snow Activities",
-  //           "Houseboats",
-  //         ],
-  //         famousFor: "Paradise on Earth",
-  //       },
-  //       {
-  //         name: "Sikkim",
-  //         image:
-  //           "https://images.unsplash.com/photo-1571115764595-644a1f56a55c?w=400&h=250&fit=crop&crop=center",
-  //         cities: ["Gangtok", "Pelling", "Lachung", "Yumthang"],
-  //         reason: "Rhododendrons in full bloom",
-  //         temp: "10-20°C",
-  //         rating: 4.8,
-  //         bestFor: [
-  //           "Mountain Views",
-  //           "Monasteries",
-  //           "Valley of Flowers",
-  //           "Adventure",
-  //         ],
-  //         famousFor: "Land of Mystical Mountains",
-  //       },
-  //       {
-  //         name: "Meghalaya",
-  //         image:
-  //           "https://images.unsplash.com/photo-1578608712688-36b5be8823dc?w=400&h=250&fit=crop&crop=center",
-  //         cities: ["Shillong", "Cherrapunji", "Mawlynnong", "Dawki"],
-  //         reason: "Pre-monsoon freshness and clear skies",
-  //         temp: "15-25°C",
-  //         rating: 4.5,
-  //         bestFor: [
-  //           "Living Root Bridges",
-  //           "Waterfalls",
-  //           "Clean Villages",
-  //           "Crystal Waters",
-  //         ],
-  //         famousFor: "Abode of Clouds",
-  //       },
-  //     ],
-  //   },
-  //   5: {
-  //     // May
-  //     month: "May",
-  //     season: "Summer",
-  //     icon: <Sun className="w-6 h-6 text-red-400" />,
-  //     weather: "Hot in Plains, Pleasant in Hills",
-  //     description:
-  //       "Escape to cool hill stations and high altitude destinations",
-  //     states: [
-  //       {
-  //         name: "Ladakh",
-  //         image:
-  //           "https://images.unsplash.com/photo-1506197603052-3cc9c3a201bd?w=400&h=250&fit=crop&crop=center",
-  //         cities: ["Leh", "Nubra Valley", "Pangong Lake", "Kargil"],
-  //         reason: "Roads open after harsh winter",
-  //         temp: "5-20°C",
-  //         rating: 4.9,
-  //         bestFor: [
-  //           "High Altitude Desert",
-  //           "Buddhist Monasteries",
-  //           "Adventure",
-  //           "Stargazing",
-  //         ],
-  //         famousFor: "Land of High Passes",
-  //       },
-  //       {
-  //         name: "Himachal Pradesh",
-  //         image:
-  //           "https://images.unsplash.com/photo-1609688669309-fc15db557633?w=400&h=250&fit=crop&crop=center",
-  //         cities: ["Manali", "Shimla", "Spiti Valley", "Kullu"],
-  //         reason: "Perfect escape from scorching plains",
-  //         temp: "15-25°C",
-  //         rating: 4.7,
-  //         bestFor: [
-  //           "Cool Climate",
-  //           "Mountain Adventures",
-  //           "Scenic Beauty",
-  //           "Apple Orchards",
-  //         ],
-  //         famousFor: "Summer Capital",
-  //       },
-  //       {
-  //         name: "Uttarakhand",
-  //         image:
-  //           "https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=400&h=250&fit=crop&crop=center",
-  //         cities: ["Nainital", "Mussoorie", "Auli", "Jim Corbett"],
-  //         reason: "Hill station season in full swing",
-  //         temp: "18-28°C",
-  //         rating: 4.6,
-  //         bestFor: [
-  //           "Lake Views",
-  //           "Mountain Resorts",
-  //           "Nature Walks",
-  //           "Wildlife Safari",
-  //         ],
-  //         famousFor: "Queen of Hills",
-  //       },
-  //     ],
-  //   },
-  //   6: {
-  //     // June
-  //     month: "June",
-  //     season: "Summer/Pre-Monsoon",
-  //     icon: <Cloud className="w-6 h-6 text-gray-400" />,
-  //     weather: "Hot and Humid",
-  //     description: "Best time for high altitude destinations before monsoon",
-  //     states: [
-  //       {
-  //         name: "Ladakh",
-  //         image:
-  //           "https://images.unsplash.com/photo-1571847140471-1d7766e825ea?w=400&h=250&fit=crop&crop=center",
-  //         cities: ["Leh", "Kargil", "Zanskar", "Tso Moriri"],
-  //         reason: "Peak season with clear mountain roads",
-  //         temp: "10-25°C",
-  //         rating: 4.9,
-  //         bestFor: ["Trekking", "Monasteries", "High Passes", "Desert Safari"],
-  //         famousFor: "Moon Land",
-  //       },
-  //       {
-  //         name: "Himachal Pradesh",
-  //         image:
-  //           "https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?w=400&h=250&fit=crop&crop=center",
-  //         cities: ["Manali", "Kasol", "Tosh", "Malana"],
-  //         reason: "Perfect hill station weather",
-  //         temp: "18-30°C",
-  //         rating: 4.7,
-  //         bestFor: ["River Valleys", "Trekking", "Mountain Views", "Camping"],
-  //         famousFor: "Adventure Paradise",
-  //       },
-  //       {
-  //         name: "Arunachal Pradesh",
-  //         image:
-  //           "https://images.unsplash.com/photo-1587474260584-136574528ed5?w=400&h=250&fit=crop&crop=center",
-  //         cities: ["Itanagar", "Tawang", "Bomdila", "Ziro"],
-  //         reason: "Pre-monsoon exploration of Northeast",
-  //         temp: "15-25°C",
-  //         rating: 4.4,
-  //         bestFor: [
-  //           "Monasteries",
-  //           "Tribal Culture",
-  //           "Mountain Views",
-  //           "Festivals",
-  //         ],
-  //         famousFor: "Land of Rising Sun",
-  //       },
-  //     ],
-  //   },
-  // };
+  const { slug } = useParams();
 
   const months = [
     "January",
@@ -522,6 +189,10 @@ const TravelCalendar = () => {
     </div>
   );
 
+  const handleClick = (slug) => {
+    return navigate(`/state/${slug}`);
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100">
       <div className="max-w-7xl mx-auto px-4 py-8">
@@ -633,6 +304,7 @@ const TravelCalendar = () => {
                   key={index}
                   className="group bg-white rounded-3xl shadow-xl overflow-hidden hover:shadow-2xl transform hover:scale-105 transition-all duration-500 border border-gray-100"
                 >
+                  {console.log("state data ", state)}
                   {/* State Image */}
                   <div className="relative h-64 overflow-hidden">
                     <img
@@ -708,7 +380,10 @@ const TravelCalendar = () => {
                     </div>
 
                     {/* CTA Button */}
-                    <button className="w-full mt-4 bg-yellow-200  py-3 rounded-xl font-semibold hover:text-white transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl">
+                    <button
+                      onClick={() => handleClick(state?.stateId?._id)}
+                      className="w-full mt-4 bg-yellow-200  py-3 rounded-xl font-semibold hover:text-white transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl"
+                    >
                       Explore {state.name}
                     </button>
                   </div>

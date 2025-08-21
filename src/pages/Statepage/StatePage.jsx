@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { FaVolumeMute, FaVolumeUp } from "react-icons/fa";
 import { Slide } from "react-slideshow-image";
 import "react-slideshow-image/dist/styles.css";
+import DOMPurify from "dompurify";
 
 import {
   Carousel,
@@ -13,7 +14,7 @@ import {
   CarouselPrevious,
 } from "@/components/components/ui/carousel";
 import { Card, CardContent } from "@/components/components/ui/card";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { AlertCircle, ChevronLeft, ChevronRight } from "lucide-react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchStateById } from "../../hooks/slices/stateSlice";
 import SectionCarousel from "@/components/SectionCarousel";
@@ -125,6 +126,7 @@ const StateWorld = () => {
   const goTo = (index) => {
     if (index >= 0 && index < state?.slideshowImages?.length) setCurrent(index);
   };
+  const hasData = state?.about && state?.about.trim() !== "";
 
   return (
     <div
@@ -180,88 +182,39 @@ const StateWorld = () => {
       {/* Main Content */}
       <div className="max-w-[1700px] mx-auto px-6 md:px-16 py-24 space-y-12 bg-gradient-to-br from-white to-yellow-50 text-black">
         <motion.section
-          className=" px-8 py-12 bg-white rounded-3xl shadow-2xl text-gray-800 leading-relaxed tracking-wide space-y-8 font-montserrat"
+          className="relative px-10 py-14 bg-gradient-to-br from-white via-gray-50 to-gray-100 rounded-3xl shadow-xl text-gray-800 font-montserrat"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-4xl font-extrabold text-center text-yellow-500 drop-shadow-lg mb-6">
-            About Madhya Pradesh Tourism (MP)
+          <h2 className="text-3xl font-bold text-center mb-8 bg-gradient-to-r from-yellow-600 to-yellow-300 bg-clip-text text-transparent">
+            About {state?.name || "This Place"}
           </h2>
 
-          <p className="text-lg max-w-prose mx-auto text-center">
-            Welcome to the{" "}
-            <span className="font-semibold text-yellow-600">
-              Heart of India
-            </span>{" "}
-            — Madhya Pradesh! A land where
-            <span className="italic text-gray-700">
-              {" "}
-              timeless heritage meets thrilling adventure
-            </span>
-            . From majestic forts and sacred temples to dense forests teeming
-            with wildlife, MP is an enchanting blend of past and present.
-          </p>
-
-          <p className="text-lg max-w-prose mx-auto text-center">
-            Nestled in the center of India, MP shares borders with 6 states:{" "}
-            <span className="font-medium text-gray-700">
-              Chhattisgarh, Maharashtra, Gujarat, Rajasthan, and Uttar Pradesh
-            </span>
-            .
-          </p>
-
-          {/* Feature Cards */}
-          <div className="grid md:grid-cols-3 gap-8   mx-auto">
-            <div className="bg-yellow-50 rounded-xl p-6 shadow-md hover:shadow-yellow-300 transition-shadow duration-300">
-              <h3 className="text-2xl font-bold text-gray-900 mb-3 flex items-center gap-2">
-                🐅 India’s Tiger State
-              </h3>
-              <p className="text-md text-gray-800">
-                Home to over{" "}
-                <span className="font-bold text-yellow-600">526 tigers</span>,
-                MP is the "Tiger State of India". Explore iconic reserves like{" "}
-                <span className="font-medium">Bandhavgarh</span>,{" "}
-                <span className="font-medium">Kanha</span>,{" "}
-                <span className="font-medium">Pench</span>, and{" "}
-                <span className="font-medium">Panna</span>.
+          {hasData ? (
+            <div
+              className="prose prose-lg max-w-none prose-headings:text-gray-900 prose-p:text-gray-700 prose-li:marker:text-blue-500 prose-a:text-blue-600 prose-a:underline"
+              dangerouslySetInnerHTML={{
+                __html: DOMPurify.sanitize(state?.about || ""),
+              }}
+            />
+          ) : (
+            <motion.div
+              className="flex items-center gap-3 p-5 bg-yellow-50 border border-yellow-300 rounded-xl shadow-sm text-yellow-800"
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4 }}
+            >
+              <AlertCircle className="w-6 h-6 text-yellow-600" />
+              <p className="text-lg font-medium">
+                No information available for this place yet.
               </p>
-            </div>
+            </motion.div>
+          )}
 
-            <div className="bg-yellow-50 rounded-xl p-6 shadow-md hover:shadow-yellow-300 transition-shadow duration-300">
-              <h3 className="text-2xl font-bold text-gray-900 mb-3 flex items-center gap-2">
-                🏛️ A Treasure Trove of Heritage
-              </h3>
-              <p className="text-md text-gray-800 mb-2">
-                Discover ancient forts, temples, and caves. Must-see UNESCO
-                sites include{" "}
-                <span className="font-semibold">Bhimbetka Rock Shelters</span>,{" "}
-                <span className="font-semibold">Khajuraho Monuments</span>, and{" "}
-                <span className="font-semibold">Sanchi Stupas</span>.
-              </p>
-              <p className="text-md text-gray-800">
-                Heritage cities <span className="font-medium">Gwalior</span> and{" "}
-                <span className="font-medium">Orchha</span> offer gems like{" "}
-                <span className="italic">Ram Raja Temple</span> and{" "}
-                <span className="italic">Chaturbhuj Temple</span>.
-              </p>
-            </div>
-
-            <div className="bg-yellow-50 rounded-xl p-6 shadow-md hover:shadow-yellow-300 transition-shadow duration-300">
-              <h3 className="text-2xl font-bold text-gray-900 mb-3 flex items-center gap-2">
-                ⛰️ Thrill Meets Tranquility
-              </h3>
-              <p className="text-md text-gray-800">
-                Adventure seekers can enjoy{" "}
-                <span className="font-medium">
-                  parasailing, rafting, trekking, and camping
-                </span>
-                . Top spots: <span className="font-semibold">Maikal Hills</span>{" "}
-                & <span className="font-semibold">Pachmarhi</span>, best visited
-                from <span className="italic">November to April</span>.
-              </p>
-            </div>
-          </div>
+          {hasData && (
+            <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 w-24 h-1 bg-gradient-to-r from-yellow-600 to-yellow-300 rounded-full"></div>
+          )}
         </motion.section>
 
         {/* Sections */}
