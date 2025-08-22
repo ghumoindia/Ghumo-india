@@ -10,6 +10,10 @@ const EndPointes = {
   getFoodsDataById: "/user/v1/foods/getFoodById",
   getPlaceDataByIds: "/user/v1/places/getPlacesById",
   fetchAllCalendar: "/user/v1/calender",
+  getAllDestinations: "/user/v1/destinations/allDestinations",
+  getDestinationById: "/user/v1/destinations/getDestinationByID",
+  getAllExperiences: "/user/v1/experience/getAllExperiences",
+  getExperienceById: "/user/v1/experience/getExperienceByID",
 };
 
 export default EndPointes;

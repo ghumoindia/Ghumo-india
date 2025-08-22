@@ -13,7 +13,7 @@ import {
   CarouselPrevious,
 } from "@/components/components/ui/carousel";
 import { Card, CardContent } from "@/components/components/ui/card";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { AlertCircle, ChevronLeft, ChevronRight } from "lucide-react";
 import { useDispatch, useSelector } from "react-redux";
 
 import SectionCarousel from "@/components/SectionCarousel";

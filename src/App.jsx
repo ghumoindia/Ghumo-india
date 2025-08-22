@@ -9,7 +9,7 @@ import Footer from "./components/Footer";
 import Home from "./pages/Home/Home";
 import StatePage from "./pages/Statepage/StatePage";
 import Experiences from "./pages/Experiences";
-import Destinations from "./pages/Destinations";
+import Destinations from "./pages/Destinations/Destinations";
 import About from "./pages/About";
 import "react-slideshow-image/dist/styles.css";
 import CityPage from "./pages/Citypage/CityPage";

@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 
-const ExperienceCard = ({ title, image, description }) => {
+const ExperienceCard = ({ title, image, description, experiences }) => {
   return (
     <motion.div
       whileHover={{ scale: 1.03 }}
@@ -14,17 +14,21 @@ const ExperienceCard = ({ title, image, description }) => {
     >
       <div className="relative group">
         <img
-          src={image}
-          alt={title}
+          src={`${import.meta.env.VITE_BACKEND_URL}${
+            experiences?.coverImage?.url
+          }`}
+          alt={experiences?.title || "Experience Image"}
           className="w-full h-60 object-cover transform group-hover:scale-105 transition-transform duration-300"
         />
         <div className="absolute bottom-0 bg-gradient-to-t from-black/60 to-transparent w-full p-4 text-white font-monsterat">
-          <h3 className="text-xl font-bold">{title}</h3>
+          <h3 className="text-xl font-bold">{experiences?.title}</h3>
         </div>
       </div>
 
       <div className="p-5">
-        <p className="text-gray-700 text-sm line-clamp-3">{description}</p>
+        <p className="text-gray-700 text-sm line-clamp-3">
+          {experiences?.subtitle}
+        </p>
       </div>
     </motion.div>
   );
