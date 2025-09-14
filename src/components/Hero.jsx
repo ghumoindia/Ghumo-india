@@ -62,14 +62,14 @@ const Hero = () => {
       {/* Overlay */}
       <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/30 to-black/80 z-10" />
 
-      {/* Volume Button */}
+      {/* Volume Button
       <button
         onClick={toggleMute}
         className="absolute top-6 right-6 z-50 bg-white/10 hover:bg-white/20 backdrop-blur-md
                border border-white/30 rounded-full p-3 transition-all duration-300 shadow-lg"
       >
         {muted ? <FaVolumeMute size={20} /> : <FaVolumeUp size={20} />}
-      </button>
+      </button> */}
 
       {/* Bottom Tabs */}
       <div className="absolute bottom-0 w-full flex justify-center z-30 pb-4">
