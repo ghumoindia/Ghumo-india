@@ -194,15 +194,15 @@ const TravelCalendar = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 mt-10">
       <div className="max-w-7xl mx-auto px-4 py-8">
         {/* Header */}
         <div className="text-center mb-12">
           <div className="flex items-center justify-center gap-4 mb-6">
-            <div className="p-3 bg-gradient-to-r from-yellow-400 to-white rounded-full">
+            <div className="p-3 bg-gradient-to-r from-yellow-400 to-yellow-200 rounded-full">
               <Calendar className="w-10 h-10 text-white" />
             </div>
-            <h1 className="text-5xl font-bold bg-gradient-to-r from-yellow-400 to-white bg-clip-text text-transparent">
+            <h1 className="text-5xl font-bold bg-gradient-to-r from-yellow-400 to-yellow-200 bg-clip-text text-transparent">
               Seasonal Travel Guide
             </h1>
           </div>

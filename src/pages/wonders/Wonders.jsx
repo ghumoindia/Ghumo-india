@@ -4,7 +4,6 @@ import { motion } from "framer-motion";
 import { FaVolumeMute, FaVolumeUp } from "react-icons/fa";
 import { Slide } from "react-slideshow-image";
 import "react-slideshow-image/dist/styles.css";
-import DOMPurify from "dompurify";
 
 import {
   Carousel,
@@ -16,98 +15,68 @@ import {
 import { Card, CardContent } from "@/components/components/ui/card";
 import { AlertCircle, ChevronLeft, ChevronRight } from "lucide-react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchStateById } from "../../hooks/slices/stateSlice";
-import SectionCarousel from "@/components/SectionCarousel";
-import fetchDataByIds from "../../utils/fetchDataByIds";
-import {
-  fetchActivitiesDataByIds,
-  fetchCitiesDataByIds,
-  fetchFoodsDataByIds,
-  fetchHotelsDataByIds,
-  fetchPlaceDataByIds,
-} from "../../hooks/slices/byIdsSlice";
 
-const StateWorld = () => {
+import DOMPurify from "dompurify";
+
+import { getSingleWonders } from "../../hooks/slices/wondersSlice";
+
+const Wonders = () => {
   const { slug } = useParams();
-  // const [state, setState] = useState(null);
+  // const [WondersData, setState] = useState(null);
   const [audio, setAudio] = useState(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [current, setCurrent] = useState(0);
-  const [placeData, setPlaceData] = useState([]);
   const [citiesData, setCitiesData] = useState([]);
   const [foodsData, setFoodsData] = useState([]);
-  const [activitiesData, setActivitiesData] = useState([]);
-  const [hotelsData, setHotelsData] = useState([]);
-  const state = useSelector((state) => state.states.currentState);
+
+  const WondersData = useSelector((state) => state?.wonders?.singleWonder);
   const dispatch = useDispatch();
-  console.log("sttat data ", state, slug, activitiesData);
+  console.log("sttat data ", WondersData, slug);
 
   useEffect(() => {
-    dispatch(fetchStateById(slug));
-  }, [slug]);
+    if (slug) {
+      dispatch(getSingleWonders({ id: slug }));
+    }
+  }, [slug, dispatch]);
 
-  useEffect(() => {
-    if (state && state.placeIds.length > 0) {
-      fetchDataByIds(
-        dispatch,
-        fetchPlaceDataByIds,
-        state.placeIds,
-        setPlaceData
-      );
-    }
-    if (state && state?.cityIds?.length > 0) {
-      fetchDataByIds(
-        dispatch,
-        fetchCitiesDataByIds,
-        state.cityIds,
-        setCitiesData
-      );
-    }
+  //   useEffect(() => {
+  //     if (WondersData && WondersData?.cityIds?.length > 0) {
+  //       fetchDataByIds(
+  //         dispatch,
+  //         fetchCitiesDataByIds,
+  //         WondersData.cityIds,
+  //         setCitiesData
+  //       );
+  //     }
 
-    if (state && state.foodIds.length > 0) {
-      fetchDataByIds(
-        dispatch,
-        fetchFoodsDataByIds,
-        state.foodIds,
-        setFoodsData
-      );
-    }
-    if (state && state.activitiesIds.length > 0) {
-      fetchDataByIds(
-        dispatch,
-        fetchActivitiesDataByIds,
-        state.activitiesIds,
-        setActivitiesData
-      );
-    }
-    if (state && state.hotelsIds.length > 0) {
-      fetchDataByIds(
-        dispatch,
-        fetchHotelsDataByIds,
-        state.hotelsIds,
-        setHotelsData
-      );
-    }
-  }, [state]);
+  //     if (WondersData && WondersData.foodIds.length > 0) {
+  //       fetchDataByIds(
+  //         dispatch,
+  //         fetchFoodsDataByIds,
+  //         WondersData.foodIds,
+  //         setFoodsData
+  //       );
+  //     }
+  //   }, [WondersData]);
 
-  useEffect(() => {
-    if (state && state.music) {
-      const bgAudio = new Audio(`/${state.music}`);
-      bgAudio.loop = true;
-      bgAudio.volume = 0.4;
-      setAudio(bgAudio);
-      bgAudio
-        .play()
-        .then(() => setIsPlaying(true))
-        .catch(() => {});
-    }
-    return () => {
-      if (audio) {
-        audio.pause();
-        audio.currentTime = 0;
-      }
-    };
-  }, [state]);
+  //   useEffect(() => {
+  //     if (WondersData && WondersData.music) {
+  //       const bgAudio = new Audio(`/${WondersData.music}`);
+  //       bgAudio.loop = true;
+  //       bgAudio.volume = 0.4;
+  //       setAudio(bgAudio);
+  //       bgAudio
+  //         .play()
+  //         .then(() => setIsPlaying(true))
+  //         .catch(() => {});
+  //     }
+  //     return () => {
+  //       if (audio) {
+  //         audio.pause();
+  //         audio.currentTime = 0;
+  //       }
+  //     };
+  //   }, [WondersData]);
 
   const toggleAudio = () => {
     if (audio) {
@@ -116,7 +85,7 @@ const StateWorld = () => {
     }
   };
 
-  if (!state)
+  if (!WondersData)
     return (
       <div className="text-center mt-16 text-red-500 font-bold text-3xl">
         Loading Incredible Experience...
@@ -124,16 +93,17 @@ const StateWorld = () => {
     );
 
   const goTo = (index) => {
-    if (index >= 0 && index < state?.slideshowImages?.length) setCurrent(index);
+    if (index >= 0 && index < WondersData?.slideshowImages?.length)
+      setCurrent(index);
   };
-  const hasData = state?.about && state?.about.trim() !== "";
+  const hasData = WondersData?.about && WondersData?.about.trim() !== "";
 
   return (
     <div
       className="  font-[Poppins] text-white"
       style={{
         background: `linear-gradient(to bottom, ${
-          state.bgTheme || "#111827"
+          WondersData?.bgTheme || "#111827"
         }, #000)`,
       }}
     >
@@ -144,7 +114,7 @@ const StateWorld = () => {
             <CarouselItem className="relative h-[500px]">
               <img
                 src={`${import.meta.env.VITE_BACKEND_URL}${
-                  state?.slideshowImages[current]?.url
+                  WondersData?.slideshowImages[current]?.url
                 }`}
                 alt={`Slide ${current + 1}`}
                 className="w-full h-full  object-cover"
@@ -152,8 +122,8 @@ const StateWorld = () => {
 
               {/* Thumbnail strip */}
               <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 bg-white/80 px-2 py-1 rounded shadow">
-                {state?.slideshowImages.length > 0 ? (
-                  state?.slideshowImages.map((img, idx) => (
+                {WondersData?.slideshowImages.length > 0 ? (
+                  WondersData?.slideshowImages.map((img, idx) => (
                     <img
                       key={idx}
                       src={`${import.meta.env.VITE_BACKEND_URL}${img?.url}`}
@@ -167,7 +137,7 @@ const StateWorld = () => {
                   <img
                     // key={idx}
                     src={`${import.meta.env.VITE_BACKEND_URL}${
-                      state?.coverImage?.url
+                      WondersData?.coverImage?.url
                     }`}
                     // onClick={() => goTo(idx)}
                     className={`h-12 w-16 object-contain cursor-pointer rounded ring-2 ring-blue-500  `}
@@ -188,14 +158,14 @@ const StateWorld = () => {
           transition={{ duration: 0.6 }}
         >
           <h2 className="text-3xl font-bold text-center mb-8 bg-gradient-to-r from-yellow-600 to-yellow-300 bg-clip-text text-transparent">
-            About {state?.name || "This Place"}
+            About {WondersData?.name || "This Place"}
           </h2>
 
           {hasData ? (
             <div
               className="prose prose-lg max-w-none prose-headings:text-gray-900 prose-p:text-gray-700 prose-li:marker:text-blue-500 prose-a:text-blue-600 prose-a:underline"
               dangerouslySetInnerHTML={{
-                __html: DOMPurify.sanitize(state?.about || ""),
+                __html: DOMPurify.sanitize(WondersData?.about || ""),
               }}
             />
           ) : (
@@ -218,46 +188,16 @@ const StateWorld = () => {
         </motion.section>
 
         {/* Sections */}
-        {citiesData.length > 0 && (
-          <SectionCarousel
-            CarouselData={citiesData}
-            title={"Famous Places"}
-            type={"cities"}
-          />
-        )}
-        {placeData.length > 0 && (
-          <SectionCarousel
-            CarouselData={placeData}
-            title={"Famous Places"}
-            type={"places"}
-          />
-        )}
-        {foodsData.length > 0 && (
-          <SectionCarousel
-            CarouselData={foodsData}
-            title={"Famous Foods"}
-            type={"foods"}
-          />
-        )}
-        {activitiesData.length > 0 && (
-          <SectionCarousel
-            CarouselData={activitiesData}
-            title={"Famous Activities"}
-            type={"activities"}
-          />
-        )}
-        {hotelsData.length > 0 && (
-          <SectionCarousel
-            CarouselData={hotelsData}
-            title={"Famous Hotels"}
-            type={"hotels"}
-          />
+        {/* {citiesData.length > 0 && (
+          <SectionCarousel CarouselData={citiesData} title="Famous Cities" />
         )}
 
-        {/* Audio Control */}
+        {foodsData.length > 0 && (
+          <SectionCarousel CarouselData={foodsData} title="Famous Foods" />
+        )} */}
       </div>
     </div>
   );
 };
 
-export default StateWorld;
+export default Wonders;

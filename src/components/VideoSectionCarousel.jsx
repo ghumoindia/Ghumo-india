@@ -9,7 +9,7 @@ import {
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 
-const SectionCarousel = ({ CarouselData, title, type }) => {
+const VideoSectionCarousel = ({ CarouselData, title, type }) => {
   const navigate = useNavigate();
   const fadeUp = {
     hidden: { opacity: 0, y: 60 },
@@ -29,8 +29,6 @@ const SectionCarousel = ({ CarouselData, title, type }) => {
     } else if (type === "foods") {
       console.log("Navigating to foods with slug:", slug);
       return navigate(`/foods/${slug}`);
-    } else if (type === "wonders") {
-      return navigate(`/wonders/${slug}`);
     }
   };
   console.log("CarouselData", CarouselData);
@@ -61,10 +59,8 @@ const SectionCarousel = ({ CarouselData, title, type }) => {
                   className="bg-white rounded-lg shadow-sm hover:shadow-lg transition-shadow duration-300 overflow-hidden"
                   variants={zoomIn}
                 >
-                  <img
-                    src={`${import.meta.env.VITE_BACKEND_URL}${
-                      item?.coverImage?.url
-                    }`}
+                  <video
+                    src={`${import.meta.env.VITE_BACKEND_URL}${item?.videoUrl}`}
                     alt={item.title || `Item ${i}`}
                     className="w-full h-48 md:h-56 object-cover"
                   />
@@ -90,4 +86,4 @@ const SectionCarousel = ({ CarouselData, title, type }) => {
   );
 };
 
-export default SectionCarousel;
+export default VideoSectionCarousel;

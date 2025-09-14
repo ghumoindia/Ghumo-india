@@ -5,10 +5,17 @@ import Hero from "../../components/Hero";
 import DiscoverIndia from "../../components/DiscoverIndia";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchAllStates } from "../../hooks/slices/stateSlice";
+import SectionCarousel from "@/components/SectionCarousel";
+import { fetchHeroVideo } from "../../hooks/slices/videoSlice";
+import VideoSectionCarousel from "@/components/VideoSectionCarousel";
+import { getWonders } from "../../hooks/slices/wondersSlice";
+import WonderCarousel from "@/components/WonderCarousel";
 
 const Home = () => {
   // const [states, setStates] = useState([]);
   const states = useSelector((state) => state.states.statesList);
+  const videoList = useSelector((state) => state?.video?.videoList || []);
+  const wondersList = useSelector((state) => state?.wonders?.wondersList || []);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -19,9 +26,11 @@ const Home = () => {
   //     .catch((err) => console.error("Error loading states:", err));
   // }, []);
 
+  console.log("wondersList", wondersList);
   useEffect(() => {
     dispatch(fetchAllStates());
-  }, []);
+    dispatch(getWonders());
+  }, [dispatch]);
   const handleClick = (slug) => {
     navigate(`/state/${slug}`);
   };
@@ -40,6 +49,15 @@ const Home = () => {
           </div>
 
           <div className="relative z-10 max-w-7xl mx-auto px-6 my-10 ">
+            <div className="text-black">
+              {wondersList.length > 0 && (
+                <WonderCarousel
+                  CarouselData={wondersList}
+                  title={"Wonders"}
+                  type={"wonders"}
+                />
+              )}
+            </div>
             {/* Cinematic Heading */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -62,7 +80,7 @@ const Home = () => {
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10">
               {states?.map((state) => (
                 <motion.div
-                  key={state.id}
+                  key={state._id}
                   onClick={() => handleClick(state._id)}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}

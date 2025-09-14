@@ -16,6 +16,7 @@ import CityPage from "./pages/Citypage/CityPage";
 import FoodsPage from "./pages/Foods/FoodsPage";
 import PlacesPage from "./pages/Places/PlacesPage";
 import TravelCalendar from "./pages/calender/TravelCalendar";
+import Wonders from "./pages/wonders/Wonders";
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
         <Route path="/destinations" element={<Destinations />} />
         <Route path="/about" element={<About />} />
         <Route path="/calender" element={<TravelCalendar />} />
+        <Route path="/wonders/:slug" element={<Wonders />} />
       </Routes>
       <Footer />
     </>

@@ -14,6 +14,9 @@ const EndPointes = {
   getDestinationById: "/user/v1/destinations/getDestinationByID",
   getAllExperiences: "/user/v1/experience/getAllExperiences",
   getExperienceById: "/user/v1/experience/getExperienceByID",
+  fetchAllVideo: "/user/v1/video/getVideo",
+  fetchAllWonders: "/user/v1/wonders/allWonders",
+  fetchSingleWonders: "/user/v1/wonders/getWondersByID",
 };
 
 export default EndPointes;

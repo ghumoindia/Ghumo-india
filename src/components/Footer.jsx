@@ -101,7 +101,6 @@ const Footer = () => {
       {/* Bottom Footer */}
       <div className="border-t border-gray-700 mt-12 pt-6 text-sm text-gray-500 flex flex-col md:flex-row justify-between items-center">
         <p>© {new Date().getFullYear()} Ghumo India. All rights reserved.</p>
-        <p>Crafted with ❤️ in Bharat</p>
       </div>
     </footer>
   );
